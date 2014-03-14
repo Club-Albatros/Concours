@@ -1,0 +1,37 @@
+﻿table.concours thead tr th
+{
+ text-align: left;
+ padding-right:30px;
+}
+table.concours tbody tr td
+{
+ vertical-align: top;
+ padding-right:30px;
+}
+table.concours_input tbody tr td .dnnLabel
+{
+ width: auto;
+}
+span.concours_inputerror
+{
+ color: #f00;
+ font-weight:bold;
+}
+table.dnnFormItem span.dnnFormMessage.dnnFormError
+{
+ bottom: auto;
+ width: 100px;
+}
+div.dnnFormItem span.dnnFormMessage.dnnFormError
+{
+ height: 2em;
+ width: 100px;
+}
+table.concours_ranking thead tr th
+{
+ font-size: 1em
+}
+tr.concours_ranking_firstrow td
+{
+ border-top: 2px solid #999;
+}

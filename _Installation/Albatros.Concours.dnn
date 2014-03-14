@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dotnetnuke xmlns:fo="http://www.w3.org/1999/XSL/Format" type="Package" version="5.0">
+ <packages>
+  <package type="Module" name="Albatros_Concours" version="01.00.00">
+   <friendlyName>Concours</friendlyName>
+   <description>Concours module</description>
+   <owner>
+    <name>Peter Donker</name>
+    <organization>Club Albatros</organization>
+    <url>http://www.clubalbatros.ch</url>
+    <email>webmaster@clubalbatros.ch</email>
+   </owner>
+   <license src="License.txt"/>
+   <releaseNotes src="ReleaseNotes.txt"/>
+   <dependencies>
+    <dependency type="CoreVersion">07.01.02</dependency>
+   </dependencies>
+   <components>
+    <component type="Module">
+     <desktopModule>
+      <moduleName>Albatros_Concours</moduleName>
+      <foldername>Albatros\Concours</foldername>
+      <moduleDefinitions>
+       <moduleDefinition>
+        <friendlyName>Concours</friendlyName>
+        <defaultCacheTime>0</defaultCacheTime>
+        <moduleControls>
+         <moduleControl>
+          <controlKey/>
+          <controlSrc>DesktopModules/Albatros/Concours/Concours.ascx</controlSrc>
+          <supportsPartialRendering>true</supportsPartialRendering>
+          <controlTitle>Concours</controlTitle>
+          <controlType>View</controlType>
+         </moduleControl>
+         <moduleControl>
+          <controlKey>DistanceView</controlKey>
+          <controlSrc>DesktopModules/Albatros/Concours/DistanceView.ascx</controlSrc>
+          <supportsPartialRendering>false</supportsPartialRendering>
+          <controlTitle>Distance View</controlTitle>
+          <controlType>View</controlType>
+         </moduleControl>
+         <moduleControl>
+          <controlKey>DistanceEdit</controlKey>
+          <controlSrc>DesktopModules/Albatros/Concours/DistanceEdit.ascx</controlSrc>
+          <supportsPartialRendering>true</supportsPartialRendering>
+          <controlTitle>Distance Edit</controlTitle>
+          <controlType>View</controlType>
+         </moduleControl>
+         <moduleControl>
+          <controlKey>BeaconEdit</controlKey>
+          <controlSrc>DesktopModules/Albatros/Concours/BeaconEdit.ascx</controlSrc>
+          <supportsPartialRendering>true</supportsPartialRendering>
+          <controlTitle>Beacon Edit</controlTitle>
+          <controlType>View</controlType>
+         </moduleControl>
+         <moduleControl>
+          <controlKey>Settings</controlKey>
+          <controlSrc>DesktopModules/Albatros/Concours/Settings.ascx</controlSrc>
+          <supportsPartialRendering/>
+          <controlTitle>Concours Settings</controlTitle>
+          <controlType>Edit</controlType>
+         </moduleControl>
+        </moduleControls>
+        <permissions>
+         <permission code="ALBATROS_CONCOURS_MODULE" key="LOGGER" name="Logger"/>
+         <permission code="ALBATROS_CONCOURS_MODULE" key="CONTROLLER" name="Controller"/>
+        </permissions>
+       </moduleDefinition>
+      </moduleDefinitions>
+     </desktopModule>
+    </component>
+   </components>
+  </package>
+ </packages>
+</dotnetnuke>

@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cmdCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="cmdSubmit.Text" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="Coordinates.Text" xml:space="preserve">
+    <value>Coordinates</value>
+  </data>
+  <data name="Description.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Landing.Text" xml:space="preserve">
+    <value>Landing</value>
+  </data>
+  <data name="Point.Text" xml:space="preserve">
+    <value>Point</value>
+  </data>
+  <data name="Required.ErrorMessage" xml:space="preserve">
+    <value>This is required</value>
+  </data>
+  <data name="Start.Text" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="Time.Text" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="InvalidCoordinates.ErrorMessage" xml:space="preserve">
+    <value>Invalid Coordinates</value>
+  </data>
+  <data name="ServerError.Text" xml:space="preserve">
+    <value>An error occurred while processing the request. Please try again later.</value>
+  </data>
+  <data name="ServerErrorWithDescription.Text" xml:space="preserve">
+    <value>An error occurred while processing the request: </value>
+  </data>
+  <data name="cmdUpload.Text" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="Delta.Text" xml:space="preserve">
+    <value>Hang glider</value>
+  </data>
+  <data name="Paraglider.Text" xml:space="preserve">
+    <value>Paraglider</value>
+  </data>
+  <data name="Rigid.Text" xml:space="preserve">
+    <value>Rigid Wing</value>
+  </data>
+  <data name="Files.Text" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="FlightData.Text" xml:space="preserve">
+    <value>Flight Data</value>
+  </data>
+  <data name="FlightPath.Text" xml:space="preserve">
+    <value>Flight Path</value>
+  </data>
+  <data name="Images.Text" xml:space="preserve">
+    <value>Images</value>
+  </data>
+  <data name="LastModifiedFormat.Text" xml:space="preserve">
+    <value>On {0:f} by {1}</value>
+  </data>
+  <data name="NotValidated.Text" xml:space="preserve">
+    <value>Not validated</value>
+  </data>
+  <data name="cmdEdit.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="cmdValidate.Text" xml:space="preserve">
+    <value>Validate</value>
+  </data>
+  <data name="InvalidNumber.ErrorMessage" xml:space="preserve">
+    <value>Not a valid number</value>
+  </data>
+  <data name="InvalidInteger.ErrorMessage" xml:space="preserve">
+    <value>Not a valid integer</value>
+  </data>
+  <data name="cmdDelete.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Delete.Confirm" xml:space="preserve">
+    <value>Do you wish to delete this entry?</value>
+  </data>
+  <data name="Validate.Confirm" xml:space="preserve">
+    <value>Do you wish to validate this flight?</value>
+  </data>
+  <data name="FreeDistance.Text" xml:space="preserve">
+    <value>Free Distance</value>
+  </data>
+  <data name="OpenTriangle.Text" xml:space="preserve">
+    <value>Open Triangle</value>
+  </data>
+  <data name="ReturnFlight.Text" xml:space="preserve">
+    <value>Return</value>
+  </data>
+  <data name="Triangle.Text" xml:space="preserve">
+    <value>Triangle</value>
+  </data>
+  <data name="Date.Text" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Distance.Text" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="FlightType.Text" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="LatestFlights.Text" xml:space="preserve">
+    <value>Latest Flights</value>
+  </data>
+  <data name="MyFlights.Text" xml:space="preserve">
+    <value>My Flights</value>
+  </data>
+  <data name="Path.Text" xml:space="preserve">
+    <value>Path</value>
+  </data>
+  <data name="Pilot.Text" xml:space="preserve">
+    <value>Pilot</value>
+  </data>
+  <data name="Points.Text" xml:space="preserve">
+    <value>Points</value>
+  </data>
+  <data name="Rank.Text" xml:space="preserve">
+    <value>Rank</value>
+  </data>
+  <data name="Rankings.Text" xml:space="preserve">
+    <value>Rankings</value>
+  </data>
+  <data name="TotalPoints.Text" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="UnvalidatedFlights.Text" xml:space="preserve">
+    <value>Unvalidated Flights</value>
+  </data>
+  <data name="View.Text" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="Date.Header" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Distance.Header" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="FlightType.Header" xml:space="preserve">
+    <value>Flight</value>
+  </data>
+  <data name="Path.Header" xml:space="preserve">
+    <value>Path</value>
+  </data>
+  <data name="Pilot.Header" xml:space="preserve">
+    <value>Pilot</value>
+  </data>
+  <data name="Points.Header" xml:space="preserve">
+    <value>Points</value>
+  </data>
+</root>
