@@ -22,8 +22,6 @@
  Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
   cmdAddDistance.Visible = Security.CanAdd
-  AddJavascriptFile("jquery.dataTables.js", 70)
-  AddJavascriptFile("moment.js", 70)
 
   tabUnvalidatedFlights.Visible = Security.CanValidate
   ctlUnvalidatedFlightsList.Visible = Security.CanValidate
