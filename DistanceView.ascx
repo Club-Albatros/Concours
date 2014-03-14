@@ -49,7 +49,7 @@
 </fieldset>
 
 <h2><%=LocalizeString("FlightPath")%></h2>
-<table>
+<table class="concours">
  <thead>
   <tr>
    <th><%=LocalizeString("Point")%></th>
@@ -76,7 +76,10 @@
 <asp:Repeater runat="server" ID="rpFiles">
  <ItemTemplate>
   <div class="concours_file">
-   <a href="<%= Albatros.DNN.Modules.Concours.Common.Globals.GetDistanceDirectoryPath(DistanceId) %><%#Container.DataItem.Name%>" target="_blank"><%#Container.DataItem.Name%></a>
+   <div class="concours_file_thumbnail">&nbsp;</div>
+   <div class="concours_file_link">
+    <a href="<%= Albatros.DNN.Modules.Concours.Common.Globals.GetDistanceDirectoryPath(DistanceId) %><%#Container.DataItem.Name%>" target="_blank"><%#Container.DataItem.Name%></a>
+   </div>
   </div>
  </ItemTemplate>
 </asp:Repeater>
@@ -85,9 +88,16 @@
 <asp:Repeater runat="server" ID="rpImages">
  <ItemTemplate>
   <div class="concours_file">
-   <a href="<%= Albatros.DNN.Modules.Concours.Common.Globals.GetDistanceDirectoryPath(DistanceId) %><%#Container.DataItem.Name%>" target="_blank">
-    <img src="<%= ResolveUrl(Albatros.DNN.Modules.Concours.Common.Globals.ModuleRelPath & "Image.ashx") %>?DistanceId=<%= DistanceId %>&Filename=<%#System.IO.Path.GetFilenameWithoutExtension(Container.DataItem.Name)%>&w=400&h=400&c=false" alt="<%#Container.DataItem.Name%>" />
-   </a>
+   <div class="concours_file_thumbnail">
+    <a href="<%= ResolveUrl(Albatros.DNN.Modules.Concours.Common.Globals.ModuleRelPath & "Image.ashx") %>?DistanceId=<%= DistanceId %>&Filename=<%#System.IO.Path.GetFilenameWithoutExtension(Container.DataItem.Name)%>&w=800&h=800&c=false" target="_blank">
+     <img src="<%= ResolveUrl(Albatros.DNN.Modules.Concours.Common.Globals.ModuleRelPath & "Image.ashx") %>?DistanceId=<%= DistanceId %>&Filename=<%#System.IO.Path.GetFilenameWithoutExtension(Container.DataItem.Name)%>&w=80&h=80&c=true" alt="<%#Container.DataItem.Name%>" />
+    </a>
+   </div>
+   <div class="concours_file_link">
+    <a href="<%= Albatros.DNN.Modules.Concours.Common.Globals.GetDistanceDirectoryPath(DistanceId) %><%#Container.DataItem.Name%>" target="_blank">
+     <%#Container.DataItem.Name%>
+    </a>
+   </div>
   </div>
  </ItemTemplate>
 </asp:Repeater>
@@ -105,3 +115,11 @@
  <asp:LinkButton runat="server" ID="cmdDelete" resourcekey="cmdDelete" Visible="false" CssClass="dnnSecondaryAction" />
  <asp:LinkButton runat="server" ID="cmdValidate" resourcekey="cmdValidate" Visible="false" CssClass="dnnSecondaryAction" />
 </p>
+
+<script type="text/javascript">
+ jQuery(function ($) {
+  $('a[href*="Image.ashx"]').colorbox({ photo: true });
+  $("tr:odd").addClass("concours_table_odd");
+ });
+</script>
+

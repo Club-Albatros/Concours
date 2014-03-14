@@ -35,3 +35,23 @@ tr.concours_ranking_firstrow td
 {
  border-top: 2px solid #999;
 }
+div.concours_file
+{
+ width: 100%;
+ background-color: #ddd;
+ margin-bottom: 20px;
+ padding: 8px;
+}
+div.concours_file_thumbnail
+{
+ display: inline-block;
+ width: 100px;
+}
+div.concours_file_link
+{
+ display: inline-block;
+}
+tr.concours_table_odd td
+{
+ background-color: #eee;
+}

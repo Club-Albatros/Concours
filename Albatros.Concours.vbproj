@@ -186,6 +186,7 @@
     <Content Include="Controls\FlightList.ascx" />
     <Content Include="Controls\RankingsTable.ascx" />
     <Content Include="css\autocomplete.css" />
+    <Content Include="css\colorbox.css" />
     <Content Include="Image.ashx" />
     <None Include="_Installation\Albatros.Concours.dnn" />
     <Compile Include="Components\ModuleBase.vb">
@@ -240,8 +241,7 @@
     <Content Include="DistanceView.ascx" />
     <Content Include="js\albatros.concours.js" />
     <Content Include="js\albatros.concours.pagescript.js" />
-    <Content Include="js\jquery.dataTables.js" />
-    <Content Include="js\moment.js" />
+    <Content Include="js\jquery.colorbox.js" />
     <Content Include="module.css" />
     <Content Include="Settings.ascx" />
   </ItemGroup>

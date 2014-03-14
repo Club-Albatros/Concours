@@ -17,6 +17,8 @@ Public Class DistanceView
  Private Sub Page_Init(sender As Object, e As System.EventArgs) Handles Me.Init
   Request.Params.ReadValue("DistanceId", DistanceId)
   LocalResourceFile = "DesktopModules/Albatros/Concours/App_LocalResources/DistanceEdit"
+  AddJavascriptFile("jquery.colorbox.js", 70)
+  AddCssFile("colorbox.css")
  End Sub
 
  Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -104,7 +106,7 @@ Public Class DistanceView
    Select Case IO.Path.GetExtension(fileName).ToLower
     Case ".jpg"
      ctlFileUpload.SaveAs(saveDir & IO.Path.GetFileNameWithoutExtension(fileName).Replace(".", "").Replace(";", "") & ".original.jpg")
-    Case ".icg", ".gpx", ".txt"
+    Case ".igc", ".gpx", ".txt"
      ctlFileUpload.SaveAs(saveDir & IO.Path.GetFileNameWithoutExtension(fileName).Replace(".", "").Replace(";", "") & IO.Path.GetExtension(fileName).ToLower)
    End Select
 
@@ -147,6 +149,11 @@ Public Class DistanceView
   Response.Redirect(EditUrl("DistanceId", DistanceId.ToString, "DistanceEdit"), False)
  End Sub
 
+ Private Sub cmdDelete_Click(sender As Object, e As System.EventArgs) Handles cmdDelete.Click
+  DistancesController.DeleteDistance(DistanceId)
+  Me.Response.Redirect(DotNetNuke.Common.NavigateURL(), False)
+ End Sub
+
  Private Sub cmdValidate_Click(sender As Object, e As System.EventArgs) Handles cmdValidate.Click
   DistanceTask.Validated = True
   DistanceTask.ValidatedByUserID = UserId
@@ -154,4 +161,5 @@ Public Class DistanceView
   DistancesController.UpdateDistance(DistanceTask, UserId)
   cmdValidate.Visible = False
  End Sub
+
 End Class
