@@ -150,6 +150,18 @@ Public Class DistanceView
  End Sub
 
  Private Sub cmdDelete_Click(sender As Object, e As System.EventArgs) Handles cmdDelete.Click
+  Dim saveDir As String = Common.Globals.GetDistanceDirectoryMapPath(DistanceId)
+  Dim files() As String = IO.Directory.GetFiles(saveDir)
+  For Each file As String In files
+   Try
+    IO.File.Delete(file)
+   Catch ex As Exception
+   End Try
+  Next
+  Try
+   IO.Directory.Delete(saveDir, True)
+  Catch ex As Exception
+  End Try
   DistancesController.DeleteDistance(DistanceId)
   Me.Response.Redirect(DotNetNuke.Common.NavigateURL(), False)
  End Sub
