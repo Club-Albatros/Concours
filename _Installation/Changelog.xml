@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="D:\Programs\Nant\ChangelogToVersionDoc.xsl"?>
+<changelog project="Albatros.Concours" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="D:\Programs\Nant\Changelog.xsd">
+ <release version="01.00.00">
+  <change type="New Feature">First Release</change>
+ </release>
+</changelog>

@@ -1,0 +1,58 @@
+/******* SPROCS *******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}Concours_AddDistance') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}{objectQualifier}Concours_AddDistance
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}Concours_DeleteDistance') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}{objectQualifier}Concours_DeleteDistance
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}Concours_GetDistance') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}{objectQualifier}Concours_GetDistance
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}Concours_GetDistancesByModule') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}{objectQualifier}Concours_GetDistancesByModule
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}Concours_GetDistancesByUser') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}{objectQualifier}Concours_GetDistancesByUser
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}Concours_GetDistancesStandings') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}{objectQualifier}Concours_GetDistancesStandings
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}Concours_ListSites') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}{objectQualifier}Concours_ListSites
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}Concours_UpdateDistance') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}{objectQualifier}Concours_UpdateDistance
+GO
+
+/******* VIEWS *******/
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}vw_Concours_Distances'))
+DROP VIEW {databaseOwner}{objectQualifier}vw_Concours_Distances
+GO
+
+/******* FUNCTIONS *******/
+/******* TRIGGERS *******/
+/******* STRUCTURE *******/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}FK_{objectQualifier}Concours_Distances_Modules') AND parent_object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}Concours_Distances'))
+ALTER TABLE {databaseOwner}{objectQualifier}Concours_Distances DROP CONSTRAINT FK_{objectQualifier}Concours_Distances_Modules
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}FK_{objectQualifier}Concours_Distances_Users') AND parent_object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}Concours_Distances'))
+ALTER TABLE {databaseOwner}{objectQualifier}Concours_Distances DROP CONSTRAINT FK_{objectQualifier}Concours_Distances_Users
+GO
+
+/******* TABLES *******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}Concours_Beacons') AND type in (N'U'))
+DROP TABLE {databaseOwner}{objectQualifier}Concours_Beacons
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}Concours_Distances') AND type in (N'U'))
+DROP TABLE {databaseOwner}{objectQualifier}Concours_Distances
+GO
+
