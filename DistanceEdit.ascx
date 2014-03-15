@@ -45,6 +45,9 @@
 	</div>
 </fieldset>
 
+<div class="dnnFormMessage">
+ <%=LocalizeString("helpPoints")%>
+</div>
 
 <table class="concours concours_input dnnFormItem">
  <thead>
@@ -140,7 +143,7 @@
 
 
 <p>
- <asp:LinkButton runat="server" ID="cmdCancel" CssClass="dnnSecondaryAction" ResourceKey="cmdCancel" />
+ <asp:LinkButton runat="server" ID="cmdCancel" CssClass="dnnSecondaryAction" ResourceKey="cmdCancel" CausesValidation="false" />
  <asp:LinkButton runat="server" ID="cmdSubmit" CssClass="dnnPrimaryAction" ResourceKey="cmdSubmit" />
 </p>
 

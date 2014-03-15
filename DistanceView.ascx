@@ -104,13 +104,16 @@
 
 
 <p runat="server" id="ctlUploadContainer">
+ <div class="dnnFormMessage">
+ <%=LocalizeString("helpFiles")%>  
+ </div>
  <dnn:label id="lblAddFile" runat="server" suffix=":" />
  <asp:FileUpload runat="server" ID="ctlFileUpload" />
  <asp:Button runat="server" ID="cmdUpload" ResourceKey="cmdUpload" CssClass="dnnSecondaryAction" />
 </p>
 
 <p>
- <asp:LinkButton runat="server" ID="cmdCancel" resourcekey="cmdCancel" Visible="true" CssClass="dnnSecondaryAction" />
+ <asp:LinkButton runat="server" ID="cmdCancel" resourcekey="cmdReturn" Visible="true" CssClass="dnnSecondaryAction" />
  <asp:LinkButton runat="server" ID="cmdEdit" resourcekey="cmdEdit" Visible="false" CssClass="dnnSecondaryAction" />
  <asp:LinkButton runat="server" ID="cmdDelete" resourcekey="cmdDelete" Visible="false" CssClass="dnnSecondaryAction" />
  <asp:LinkButton runat="server" ID="cmdValidate" resourcekey="cmdValidate" Visible="false" CssClass="dnnSecondaryAction" />

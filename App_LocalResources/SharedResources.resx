@@ -273,4 +273,7 @@
   <data name="Points.Header" xml:space="preserve">
     <value>Points</value>
   </data>
+  <data name="cmdReturn.Text" xml:space="preserve">
+    <value>Return</value>
+  </data>
 </root>

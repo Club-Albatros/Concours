@@ -14,8 +14,8 @@
        <%#Albatros.DNN.Modules.Concours.Common.Globals.ConvertToFlightTypeName(CInt(Eval("FlightType")))%>
       </ItemTemplate>
      </dnn:DnnGridTemplateColumn>
-     <dnn:DnnGridBoundColumn datafield="TotalDistance" headertext="Distance" />
-     <dnn:DnnGridBoundColumn datafield="TotalPoints" headertext="Points" />
+     <dnn:DnnGridBoundColumn datafield="TotalDistance" headertext="Distance" DataFormatString="{0:0.0}" />
+     <dnn:DnnGridBoundColumn datafield="TotalPoints" headertext="Points" DataFormatString="{0:0.0}" />
      <dnn:DnnGridTemplateColumn HeaderText="Actions">
       <ItemStyle Width="90px"></ItemStyle>
       <ItemTemplate>
