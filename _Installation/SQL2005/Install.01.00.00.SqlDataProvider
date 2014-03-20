@@ -725,7 +725,7 @@ SELECT
 FROM
  {databaseOwner}{objectQualifier}Concours_Beacons b
  ) Sites
-WHERE Sites.ADescription LIKE '%' + @StartString + '%'
+WHERE Sites.ADescription COLLATE Latin1_general_CI_AI LIKE '%' + @StartString + '%' COLLATE Latin1_general_CI_AI
  AND NOT Sites.ADescription = 'Vache'
 ORDER BY Sites.ADescription
 GO
