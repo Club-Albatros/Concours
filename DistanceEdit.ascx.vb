@@ -54,7 +54,7 @@ Public Class DistanceEdit
    End If
   End If
 
-  If Not Security.CanValidate Then
+  If Not Security.CanValidate Or DistanceTask Is Nothing Then
    trSummary.Visible = False
    trTotalDistance.Visible = False
    trTotalPoints.Visible = False

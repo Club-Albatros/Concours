@@ -329,6 +329,15 @@ Partial Public Class DistanceEdit
  Protected WithEvents txtCoordinatesC1 As Global.System.Web.UI.WebControls.TextBox
 
  '''<summary>
+ '''regCoordinatesC1 control.
+ '''</summary>
+ '''<remarks>
+ '''Auto-generated field.
+ '''To modify move field declaration from designer file to code-behind file.
+ '''</remarks>
+ Protected WithEvents regCoordinatesC1 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+ '''<summary>
  '''lblC2 control.
  '''</summary>
  '''<remarks>
@@ -354,6 +363,15 @@ Partial Public Class DistanceEdit
  '''To modify move field declaration from designer file to code-behind file.
  '''</remarks>
  Protected WithEvents txtCoordinatesC2 As Global.System.Web.UI.WebControls.TextBox
+
+ '''<summary>
+ '''regCoordinatesC2 control.
+ '''</summary>
+ '''<remarks>
+ '''Auto-generated field.
+ '''To modify move field declaration from designer file to code-behind file.
+ '''</remarks>
+ Protected WithEvents regCoordinatesC2 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
  '''<summary>
  '''lblB control.
@@ -390,6 +408,15 @@ Partial Public Class DistanceEdit
  '''To modify move field declaration from designer file to code-behind file.
  '''</remarks>
  Protected WithEvents txtCoordinatesB As Global.System.Web.UI.WebControls.TextBox
+
+ '''<summary>
+ '''regCoordinatesB control.
+ '''</summary>
+ '''<remarks>
+ '''Auto-generated field.
+ '''To modify move field declaration from designer file to code-behind file.
+ '''</remarks>
+ Protected WithEvents regCoordinatesB As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
  '''<summary>
  '''txtDescriptionLanding control.

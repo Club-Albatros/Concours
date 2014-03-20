@@ -121,7 +121,7 @@
     <value>Keep in mind that for flights longer than 50 km you are required to supply evidence. Please submit relevant files below.</value>
   </data>
   <data name="helpPoints.Text" xml:space="preserve">
-    <value>Please enter your flight points below. Note coordinates are in Swiss grid format longitude/latitude (eg. 547470/197740). When entering a location description, the module will attempt to match this with existing data and suggest locations that have already been entered.</value>
+    <value>Please enter your flight points below. When entering a location description, the module will attempt to match this with existing data and suggest locations that have already been entered. Note &lt;strong&gt;coordinates are in Swiss grid format longitude/latitude&lt;/strong&gt; (eg. 547470/197740).</value>
   </data>
   <data name="lblA.Help" xml:space="preserve">
     <value>If not the same as the start. Ignore otherwise.</value>

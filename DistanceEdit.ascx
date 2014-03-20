@@ -72,7 +72,7 @@
    <td>
     <asp:TextBox runat="server" ID="txtCoordinatesStart" Width="200" />
     <asp:requiredfieldvalidator id="reqCoordinatesStart" resourcekey="Required.ErrorMessage" CssClass="dnnFormMessage dnnFormError" runat="server" controltovalidate="txtCoordinatesStart" display="Dynamic" />
-    <asp:RegularExpressionValidator runat="server" ID="regCoordinatesStart" resourcekey="InvalidCoordinates.ErrorMessage" CssClass="dnnFormMessage dnnFormError" controltovalidate="txtCoordinatesStart" display="Dynamic" ValidationExpression="\d{6}\s*/\s*\d{6}" />
+    <asp:RegularExpressionValidator runat="server" ID="regCoordinatesStart" resourcekey="InvalidCoordinates.ErrorMessage" CssClass="dnnFormMessage dnnFormError" controltovalidate="txtCoordinatesStart" display="Dynamic" ValidationExpression="\d{6}/\d{6}" />
    </td>
   </tr>
   <tr>
@@ -85,7 +85,7 @@
    </td>
    <td>
     <asp:TextBox runat="server" ID="txtCoordinatesA" Width="200" />
-    <asp:RegularExpressionValidator runat="server" ID="regCoordinatesA" resourcekey="InvalidCoordinates.ErrorMessage" CssClass="dnnFormMessage dnnFormError" controltovalidate="txtCoordinatesA" display="Dynamic" ValidationExpression="\d{6}\s*/\s*\d{6}" />
+    <asp:RegularExpressionValidator runat="server" ID="regCoordinatesA" resourcekey="InvalidCoordinates.ErrorMessage" CssClass="dnnFormMessage dnnFormError" controltovalidate="txtCoordinatesA" display="Dynamic" ValidationExpression="\d{6}/\d{6}" />
    </td>
   </tr>
   <tr id="trC1">
@@ -97,6 +97,7 @@
    </td>
    <td>
     <asp:TextBox runat="server" ID="txtCoordinatesC1" Width="200" />
+    <asp:RegularExpressionValidator runat="server" ID="regCoordinatesC1" resourcekey="InvalidCoordinates.ErrorMessage" CssClass="dnnFormMessage dnnFormError" controltovalidate="txtCoordinatesC1" display="Dynamic" ValidationExpression="\d{6}/\d{6}" />
    </td>
   </tr>
   <tr id="trC2">
@@ -108,6 +109,7 @@
    </td>
    <td>
     <asp:TextBox runat="server" ID="txtCoordinatesC2" Width="200" />
+    <asp:RegularExpressionValidator runat="server" ID="regCoordinatesC2" resourcekey="InvalidCoordinates.ErrorMessage" CssClass="dnnFormMessage dnnFormError" controltovalidate="txtCoordinatesC2" display="Dynamic" ValidationExpression="\d{6}/\d{6}" />
    </td>
   </tr>
   <tr>
@@ -120,6 +122,7 @@
    </td>
    <td>
     <asp:TextBox runat="server" ID="txtCoordinatesB" Width="200" />
+    <asp:RegularExpressionValidator runat="server" ID="regCoordinatesB" resourcekey="InvalidCoordinates.ErrorMessage" CssClass="dnnFormMessage dnnFormError" controltovalidate="txtCoordinatesB" display="Dynamic" ValidationExpression="\d{6}/\d{6}" />
    </td>
   </tr>
   <tr>
@@ -135,7 +138,7 @@
    <td>
     <asp:TextBox runat="server" ID="txtCoordinatesLanding" Width="200" />
     <asp:requiredfieldvalidator id="reqCoordinatesLanding" resourcekey="Required.ErrorMessage" CssClass="dnnFormMessage dnnFormError" runat="server" controltovalidate="txtCoordinatesLanding" display="Dynamic" />
-    <asp:RegularExpressionValidator runat="server" ID="regCoordinatesLanding" resourcekey="InvalidCoordinates.ErrorMessage" CssClass="dnnFormMessage dnnFormError" controltovalidate="txtCoordinatesLanding" display="Dynamic" ValidationExpression="\d{6}\s*/\s*\d{6}" />
+    <asp:RegularExpressionValidator runat="server" ID="regCoordinatesLanding" resourcekey="InvalidCoordinates.ErrorMessage" CssClass="dnnFormMessage dnnFormError" controltovalidate="txtCoordinatesLanding" display="Dynamic" ValidationExpression="\d{6}/\d{6}" />
    </td>
   </tr>
  </tbody>
