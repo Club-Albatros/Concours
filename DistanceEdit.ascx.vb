@@ -155,7 +155,27 @@ Public Class DistanceEdit
     latCh = val1
    End If
    Dim newHeight As Double = 0
+   coordinates = longCh.ToString & "/" & latCh.ToString
    Conversions.SwissProjection.LV03toWGS84(longCh, latCh, 0, latitude, longitude, newHeight)
+   Exit Sub
+  End If
+
+  m = Regex.Match(coordinates, "(\d+\.\d+)/(\d+\.\d+)")
+  If m.Success Then
+   Dim val1 As Double = Double.Parse(m.Groups(1).Value, Globalization.NumberStyles.AllowDecimalPoint, Globalization.CultureInfo.InvariantCulture)
+   Dim val2 As Double = Double.Parse(m.Groups(2).Value, Globalization.NumberStyles.AllowDecimalPoint, Globalization.CultureInfo.InvariantCulture)
+   Dim longWgs As Double = 0
+   Dim latWgs As Double = 0
+   If val1 > val2 Then ' in CH lat is about 46 and long about 6
+    latWgs = val1
+    longWgs = val2
+   Else
+    longWgs = val1
+    latWgs = val2
+   End If
+   longitude = longWgs
+   latitude = latWgs
+   Exit Sub
   End If
 
  End Sub
