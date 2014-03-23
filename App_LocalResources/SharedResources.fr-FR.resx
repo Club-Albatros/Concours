@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cmdCancel.Text">
+    <value xml:space="preserve">Annuler</value>
+  </data>
+  <data name="cmdDelete.Text" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Supprimer</value>
+  </data>
+  <data name="cmdEdit.Text" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Edition</value>
+  </data>
+  <data name="cmdReturn.Text">
+    <value xml:space="preserve">Retour</value>
+  </data>
+  <data name="cmdSubmit.Text" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Envoyer</value>
+  </data>
+  <data name="cmdUpload.Text" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Télécharger</value>
+  </data>
+  <data name="cmdValidate.Text">
+    <value xml:space="preserve">Valider</value>
+  </data>
+  <data name="Coordinates.Text">
+    <value xml:space="preserve">Coordonnées</value>
+  </data>
+  <data name="Date.Header" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Date</value>
+  </data>
+  <data name="Date.Text" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Date</value>
+  </data>
+  <data name="Delete.Confirm" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Voulez-vous vraiment supprimer cette entrée ?</value>
+  </data>
+  <data name="Delta.Text">
+    <value xml:space="preserve">Deltaplane</value>
+  </data>
+  <data name="Description.Text" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Description</value>
+  </data>
+  <data name="Distance.Header" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Distance</value>
+  </data>
+  <data name="Distance.Text" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Distance</value>
+  </data>
+  <data name="Files.Text">
+    <value xml:space="preserve">Fichiers</value>
+  </data>
+  <data name="FlightData.Text">
+    <value xml:space="preserve">Données de vol</value>
+  </data>
+  <data name="FlightPath.Text">
+    <value xml:space="preserve">Trajet</value>
+  </data>
+  <data name="FlightType.Header">
+    <value xml:space="preserve">Vol</value>
+  </data>
+  <data name="FlightType.Text" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Type</value>
+  </data>
+  <data name="FreeDistance.Text">
+    <value xml:space="preserve">Distance Libre</value>
+  </data>
+  <data name="Images.Text" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Images</value>
+  </data>
+  <data name="InvalidCoordinates.ErrorMessage">
+    <value xml:space="preserve">Coordonnées pas conforme</value>
+  </data>
+  <data name="InvalidInteger.ErrorMessage" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Pas un nombre entier valide</value>
+  </data>
+  <data name="InvalidNumber.ErrorMessage" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Pas un nombre valide</value>
+  </data>
+  <data name="Landing.Text">
+    <value xml:space="preserve">Atterissage</value>
+  </data>
+  <data name="LastModifiedFormat.Text">
+    <value xml:space="preserve">{0:f} par {1}</value>
+  </data>
+  <data name="LatestFlights.Text" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Derniers vols</value>
+  </data>
+  <data name="MyFlights.Text">
+    <value xml:space="preserve">Mes vols</value>
+  </data>
+  <data name="NotValidated.Text">
+    <value xml:space="preserve">Non validé</value>
+  </data>
+  <data name="OpenTriangle.Text">
+    <value xml:space="preserve">Parcours brisé</value>
+  </data>
+  <data name="Outside.Text" lastModified="2014-03-23 10:47:13">
+    <value xml:space="preserve">Vache</value>
+  </data>
+  <data name="Paraglider.Text">
+    <value xml:space="preserve">Parapente</value>
+  </data>
+  <data name="Path.Header">
+    <value xml:space="preserve">Trajet</value>
+  </data>
+  <data name="Path.Text">
+    <value xml:space="preserve">Trajet</value>
+  </data>
+  <data name="Pilot.Header">
+    <value xml:space="preserve">Pilote</value>
+  </data>
+  <data name="Pilot.Text">
+    <value xml:space="preserve">Pilote</value>
+  </data>
+  <data name="Point.Text" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Point</value>
+  </data>
+  <data name="Points.Header" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Points</value>
+  </data>
+  <data name="Points.Text" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Points</value>
+  </data>
+  <data name="Rank.Text">
+    <value xml:space="preserve">Rang</value>
+  </data>
+  <data name="Rankings.Text" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Classement</value>
+  </data>
+  <data name="Required.ErrorMessage" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Ce paramètre est requis</value>
+  </data>
+  <data name="ReturnFlight.Text">
+    <value xml:space="preserve">Aller-retour</value>
+  </data>
+  <data name="Rigid.Text">
+    <value xml:space="preserve">Rigide</value>
+  </data>
+  <data name="ServerError.Text" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Une erreur s'est produite lors du traitement de la demande. Veuillez réessayer ultérieurement.</value>
+  </data>
+  <data name="ServerErrorWithDescription.Text" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Une erreur s'est produite lors du traitement de la demande : </value>
+  </data>
+  <data name="Start.Text">
+    <value xml:space="preserve">Décollage</value>
+  </data>
+  <data name="Time.Text">
+    <value xml:space="preserve">Heure</value>
+  </data>
+  <data name="TotalPoints.Text">
+    <value xml:space="preserve">Totale</value>
+  </data>
+  <data name="Triangle.Text" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Triangle</value>
+  </data>
+  <data name="UnvalidatedFlights.Text" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Vols non validées</value>
+  </data>
+  <data name="Validate.Confirm" lastModified="2014-03-21 11:27:34">
+    <value xml:space="preserve">Vous souhaitez valider ce vol ?</value>
+  </data>
+  <data name="View.Text">
+    <value xml:space="preserve">Détails</value>
+  </data>
+</root>

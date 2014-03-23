@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="helpFiles.Text" lastModified="2014-03-21 11:25:04">
+    <value xml:space="preserve">N'oubliez pas que pour les vols de plus de 50 km, vous êtes tenu de fournir les preuves. Veuillez soumettre les fichiers pertinents ci-dessous.</value>
+  </data>
+  <data name="helpPoints.Text" lastModified="2014-03-23 10:46:39">
+    <value xml:space="preserve">Veuillez entrer vos points de vol ci-dessous. Lorsque vous entrez une description de l'emplacement, le module va tenter de trouver les données existantes et de suggérer des endroits qui ont déjà été saisis. Les coordonnées doivent etre enregistre dans le format &lt;strong&gt;Swiss grid (CH1903)&lt;/strong&gt; ou &lt;strong&gt;WSG84&lt;/strong&gt; en &lt;strong&gt;longitude/latitude&lt;/strong&gt; (eg. 547470/197740 ou 6.81817265/50.1452500).&lt;br&gt;Une descriptif de l'endroit est obligatoire pour le départ. Essayez de trouver une bonne description pour les points intermediare du vol. Si vous avez vous vache, vous pouvez laisser la description de l'atterrissage vide.</value>
+  </data>
+  <data name="lblA.Help">
+    <value xml:space="preserve">Si le point de départ diffère du décollage.</value>
+  </data>
+  <data name="lblAddFile.Help" lastModified="2014-03-21 11:25:04">
+    <value xml:space="preserve">Ajouter des fichiers comme preuve du vol (images, trace gps)</value>
+  </data>
+  <data name="lblAddFile.Text" lastModified="2014-03-21 11:25:04">
+    <value xml:space="preserve">Télécharger</value>
+  </data>
+  <data name="lblB.Help" lastModified="2014-03-21 11:25:04">
+    <value xml:space="preserve">Si le point d'arrivée diffère de l'atterrissage.</value>
+  </data>
+  <data name="lblC1.Help" lastModified="2014-03-21 11:25:04">
+    <value xml:space="preserve">Point de virage</value>
+  </data>
+  <data name="lblC2.Help" lastModified="2014-03-21 11:25:04">
+    <value xml:space="preserve">Deuxième point de virage</value>
+  </data>
+  <data name="lblCategory.Help" lastModified="2014-03-21 11:25:04">
+    <value xml:space="preserve">Sélectionnez la catégorie de vol selon votre type d'aile</value>
+  </data>
+  <data name="lblCategory.Text">
+    <value xml:space="preserve">Catégorie</value>
+  </data>
+  <data name="lblComments.Help" lastModified="2014-03-21 11:25:04">
+    <value xml:space="preserve">Des commentaires à propos du vol que nous devrions être au courant.</value>
+  </data>
+  <data name="lblComments.Text">
+    <value xml:space="preserve">Commentaires, météo, etc</value>
+  </data>
+  <data name="lblFlightDate.Help">
+    <value xml:space="preserve">Date du vol</value>
+  </data>
+  <data name="lblFlightDate.Text">
+    <value xml:space="preserve">Date du vol</value>
+  </data>
+  <data name="lblFlightType.Help" lastModified="2014-03-21 11:25:04">
+    <value xml:space="preserve">Sélectionnez le type de vol de FAI. Si vous n'êtes pas sûr, veuillez consulter le réglement.</value>
+  </data>
+  <data name="lblFlightType.Text">
+    <value xml:space="preserve">Type de vol</value>
+  </data>
+  <data name="lblLastModified.Help">
+    <value xml:space="preserve">Dernières modifications des données du vol : date et auteur</value>
+  </data>
+  <data name="lblLastModified.Text">
+    <value xml:space="preserve">Dernière modification</value>
+  </data>
+  <data name="lblPilot.Help">
+    <value xml:space="preserve">Nom du pilote affiché</value>
+  </data>
+  <data name="lblPilot.Text">
+    <value xml:space="preserve">Pilote</value>
+  </data>
+  <data name="lblSummary.Help">
+    <value xml:space="preserve">Résumé du vol</value>
+  </data>
+  <data name="lblSummary.Text">
+    <value xml:space="preserve">Résumé</value>
+  </data>
+  <data name="lblTotalDistance.Help">
+    <value xml:space="preserve">La distance totale entre les points de ce trajet</value>
+  </data>
+  <data name="lblTotalDistance.Text">
+    <value xml:space="preserve">Distance totale (km)</value>
+  </data>
+  <data name="lblTotalPoints.Help">
+    <value xml:space="preserve">Nombre de points pour ce vol</value>
+  </data>
+  <data name="lblTotalPoints.Text">
+    <value xml:space="preserve">Nb de points total</value>
+  </data>
+  <data name="lblValidated.Help">
+    <value xml:space="preserve">Date et auteur de la validation du vol</value>
+  </data>
+  <data name="lblValidated.Text">
+    <value xml:space="preserve">Validé</value>
+  </data>
+</root>
