@@ -1,0 +1,79 @@
+ALTER TABLE {databaseOwner}{objectQualifier}Concours_Distances
+ALTER COLUMN [LandingDescription] [nvarchar](200) NULL
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}Concours_ListSites') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}{objectQualifier}Concours_ListSites
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Concours_ListSites
+ @StartString NVARCHAR(50)
+AS
+SELECT DISTINCT TOP 20 
+ Sites.ADescription As [Description],
+ Sites.ACoords As Coords
+FROM
+(SELECT
+ d.ADescription,
+ d.ACoords
+FROM
+ {databaseOwner}{objectQualifier}Concours_Distances d
+WHERE
+ NOT d.ACoords IS NULL
+UNION
+SELECT
+ d.BDescription,
+ d.BCoords
+FROM
+ {databaseOwner}{objectQualifier}Concours_Distances d
+WHERE
+ NOT d.BCoords IS NULL
+UNION
+SELECT
+ d.C1Description,
+ d.C1Coords
+FROM
+ {databaseOwner}{objectQualifier}Concours_Distances d
+WHERE
+ NOT d.C1Coords IS NULL
+UNION
+SELECT
+ d.C2Description,
+ d.C2Coords
+FROM
+ {databaseOwner}{objectQualifier}Concours_Distances d
+WHERE
+ NOT d.C2Coords IS NULL
+UNION
+SELECT
+ d.StartDescription,
+ d.StartCoords
+FROM
+ {databaseOwner}{objectQualifier}Concours_Distances d
+WHERE
+ NOT d.StartCoords IS NULL
+UNION
+SELECT
+ d.LandingDescription,
+ d.LandingCoords
+FROM
+ {databaseOwner}{objectQualifier}Concours_Distances d
+WHERE
+ NOT d.LandingCoords IS NULL
+ 
+UNION
+SELECT
+ b.BaliseName,
+ CAST(b.LongitudeCh AS char(6))+'/'+CAST(b.LatitudeCh AS char(6))
+FROM
+ {databaseOwner}{objectQualifier}Concours_Beacons b
+ ) Sites
+WHERE Sites.ADescription COLLATE Latin1_general_CI_AI LIKE '%' + @StartString + '%' COLLATE Latin1_general_CI_AI
+ AND NOT Sites.ADescription = 'Vache'
+ AND (NOT ISNULL(Sites.ADescription, '') = '')
+ORDER BY Sites.ADescription
+GO
