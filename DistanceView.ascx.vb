@@ -42,7 +42,7 @@ Public Class DistanceView
    Dim points As New List(Of Point)
    Select Case DistanceTask.FlightType
     Case FlightType.FreeDistance
-     imgFlightType.ImageUrl = ResolveUrl(ModuleRelPath & "images/open_oneway.png")
+     imgFlightType.ImageUrl = ResolveUrl(glbModuleRelPath & "images/open_oneway.png")
      points.Add(New Point With {.Name = LocalizeString("Start"), .Description = DistanceTask.StartDescription, .Time = DistanceTask.FlightStart, .Coords = DistanceTask.StartCoords})
      If Not String.IsNullOrEmpty(DistanceTask.ACoords) Then
       points.Add(New Point With {.Name = "A", .Description = DistanceTask.ADescription, .Time = DistanceTask.ATime, .Coords = DistanceTask.ACoords})
@@ -52,7 +52,7 @@ Public Class DistanceView
      End If
      points.Add(New Point With {.Name = LocalizeString("Landing"), .Description = DistanceTask.LandingDescription, .Time = DistanceTask.LandingTime, .Coords = DistanceTask.LandingCoords})
     Case FlightType.OpenTriangle
-     imgFlightType.ImageUrl = ResolveUrl(ModuleRelPath & "images/open_broken.png")
+     imgFlightType.ImageUrl = ResolveUrl(glbModuleRelPath & "images/open_broken.png")
      points.Add(New Point With {.Name = LocalizeString("Start"), .Description = DistanceTask.StartDescription, .Time = DistanceTask.FlightStart, .Coords = DistanceTask.StartCoords})
      If Not String.IsNullOrEmpty(DistanceTask.ACoords) Then
       points.Add(New Point With {.Name = "A", .Description = DistanceTask.ADescription, .Time = DistanceTask.ATime, .Coords = DistanceTask.ACoords})
@@ -63,7 +63,7 @@ Public Class DistanceView
      End If
      points.Add(New Point With {.Name = LocalizeString("Landing"), .Description = DistanceTask.LandingDescription, .Time = DistanceTask.LandingTime, .Coords = DistanceTask.LandingCoords})
     Case FlightType.ReturnFlight
-     imgFlightType.ImageUrl = ResolveUrl(ModuleRelPath & "images/open_broken.png")
+     imgFlightType.ImageUrl = ResolveUrl(glbModuleRelPath & "images/open_broken.png")
      points.Add(New Point With {.Name = LocalizeString("Start"), .Description = DistanceTask.StartDescription, .Time = DistanceTask.FlightStart, .Coords = DistanceTask.StartCoords})
      If Not String.IsNullOrEmpty(DistanceTask.ACoords) Then
       points.Add(New Point With {.Name = "A", .Description = DistanceTask.ADescription, .Time = DistanceTask.ATime, .Coords = DistanceTask.ACoords})
@@ -73,9 +73,9 @@ Public Class DistanceView
       points.Add(New Point With {.Name = "B", .Description = DistanceTask.BDescription, .Time = DistanceTask.BTime, .Coords = DistanceTask.BCoords})
      End If
      points.Add(New Point With {.Name = LocalizeString("Landing"), .Description = DistanceTask.LandingDescription, .Time = DistanceTask.LandingTime, .Coords = DistanceTask.LandingCoords})
-     imgFlightType.ImageUrl = ResolveUrl(ModuleRelPath & "images/closed_back.png")
+     imgFlightType.ImageUrl = ResolveUrl(glbModuleRelPath & "images/closed_back.png")
     Case FlightType.Triangle
-     imgFlightType.ImageUrl = ResolveUrl(ModuleRelPath & "images/open_broken.png")
+     imgFlightType.ImageUrl = ResolveUrl(glbModuleRelPath & "images/open_broken.png")
      points.Add(New Point With {.Name = LocalizeString("Start"), .Description = DistanceTask.StartDescription, .Time = DistanceTask.FlightStart, .Coords = DistanceTask.StartCoords})
      If Not String.IsNullOrEmpty(DistanceTask.ACoords) Then
       points.Add(New Point With {.Name = "A", .Description = DistanceTask.ADescription, .Time = DistanceTask.ATime, .Coords = DistanceTask.ACoords})
@@ -86,7 +86,7 @@ Public Class DistanceView
       points.Add(New Point With {.Name = "B", .Description = DistanceTask.BDescription, .Time = DistanceTask.BTime, .Coords = DistanceTask.BCoords})
      End If
      points.Add(New Point With {.Name = LocalizeString("Landing"), .Description = DistanceTask.LandingDescription, .Time = DistanceTask.LandingTime, .Coords = DistanceTask.LandingCoords})
-     imgFlightType.ImageUrl = ResolveUrl(ModuleRelPath & "images/closed_triangle.png")
+     imgFlightType.ImageUrl = ResolveUrl(glbModuleRelPath & "images/closed_triangle.png")
    End Select
 
    rpPoints.DataSource = points

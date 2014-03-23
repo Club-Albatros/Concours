@@ -49,20 +49,10 @@ Public Class ModuleBase
  Public Sub AddConcoursService()
 
   If Context.Items("ConcoursServiceAdded") Is Nothing Then
-
    DotNetNuke.Framework.jQuery.RequestDnnPluginsRegistration()
    DotNetNuke.Framework.ServicesFramework.Instance.RequestAjaxScriptSupport()
    DotNetNuke.Framework.ServicesFramework.Instance.RequestAjaxAntiForgerySupport()
    AddJavascriptFile("albatros.concours.js", 70)
-
-   ' Load initialization snippet
-   Dim scriptBlock As String = Common.Globals.ReadFile(DotNetNuke.Common.ApplicationMapPath & "\DesktopModules\Albatros\Concours\js\albatros.concours.pagescript.js")
-   scriptBlock = scriptBlock.Replace("[ModuleId]", ModuleId.ToString)
-   scriptBlock = scriptBlock.Replace("[ServerError]", LocalizeString("ServerError"))
-   scriptBlock = scriptBlock.Replace("[ServerErrorWithDescription]", LocalizeString("ServerErrorWithDescription"))
-   scriptBlock = "<script type=""text/javascript"">" & vbCrLf & "//<![CDATA[" & vbCrLf & scriptBlock & vbCrLf & "//]]>" & vbCrLf & "</script>"
-   Page.ClientScript.RegisterClientScriptBlock(Me.GetType, "ConcoursServiceScript", scriptBlock)
-
    Context.Items("ConcoursServiceAdded") = True
   End If
 

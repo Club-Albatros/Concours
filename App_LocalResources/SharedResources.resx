@@ -276,4 +276,7 @@
   <data name="cmdReturn.Text" xml:space="preserve">
     <value>Return</value>
   </data>
+  <data name="Outside.Text" xml:space="preserve">
+    <value>Outside</value>
+  </data>
 </root>

@@ -35,12 +35,12 @@
 	</div>
 	<div class="dnnFormItem" id="trTotalDistance" runat="server">
   <dnn:label id="lblTotalDistance" runat="server" controlname="txtTotalDistance" suffix=":" />
-  <asp:TextBox runat="server" ID="txtTotalDistance" Width="30" />
+  <asp:TextBox runat="server" ID="txtTotalDistance" Width="100" />
   <asp:RegularExpressionValidator runat="server" ID="regTotalDistance" resourcekey="InvalidNumber.ErrorMessage" CssClass="dnnFormMessage dnnFormError" controltovalidate="txtTotalDistance" display="Dynamic" ValidationExpression="\d+([\.,]?)\d?" />
 	</div>
 	<div class="dnnFormItem" id="trTotalPoints" runat="server">
   <dnn:label id="lblTotalPoints" runat="server" controlname="txtTotalPoints" suffix=":" />
-  <asp:TextBox runat="server" ID="txtTotalPoints" Width="30" />
+  <asp:TextBox runat="server" ID="txtTotalPoints" Width="100" />
   <asp:RegularExpressionValidator runat="server" ID="regTotalPoints" resourcekey="InvalidInteger.ErrorMessage" CssClass="dnnFormMessage dnnFormError" controltovalidate="txtTotalPoints" display="Dynamic" ValidationExpression="\d+" />
 	</div>
 </fieldset>
@@ -150,8 +150,17 @@
 </p>
 
 <script>
+ var concoursService;
+
 (function ($, Sys) {
  $(document).ready(function () {
+
+  concoursService = new ConcoursService($, {
+   serverErrorText: '<%= LocalizeJSString("ServerError") %>',
+   serverErrorWithDescriptionText: '<%= LocalizeJSString("ServerErrorWithDescription") %>',
+   errorBoxId: '#concoursServiceErrorBox<%= ModuleId %>'
+  },
+  <%= ModuleId %>);
 
   setRowVisibilities($('#<%=ddFlightType.ClientID%>').children('option:selected').val());
 

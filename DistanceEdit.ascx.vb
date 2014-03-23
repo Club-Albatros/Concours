@@ -122,29 +122,12 @@ Public Class DistanceEdit
  End Sub
 
 #Region " Private Methods "
- 'Private Sub SetVisibility(selectedFlightType As Integer)
- ' Select Case selectedFlightType
- '  Case FlightType.FreeDistance
- '   trC1.Visible = False
- '   trC2.Visible = False
- '  Case FlightType.OpenTriangle
- '   trC1.Visible = True
- '   trC2.Visible = False
- '  Case FlightType.ReturnFlight
- '   trC1.Visible = True
- '   trC2.Visible = False
- '  Case FlightType.Triangle
- '   trC1.Visible = True
- '   trC2.Visible = True
- ' End Select
- 'End Sub
-
- Private Sub FillCoordinates(coordinates As String, ByRef latitude As Double, ByRef longitude As Double)
+ Private Sub FillCoordinates(ByRef coordinates As String, ByRef latitude As Double, ByRef longitude As Double)
 
   Dim m As Match = Regex.Match(coordinates, "(\d{6})[^\d]+(\d{6})")
   If m.Success Then
    Dim val1 As Integer = Integer.Parse(m.Groups(1).Value)
-   Dim val2 As Integer = Integer.Parse(m.Groups(1).Value)
+   Dim val2 As Integer = Integer.Parse(m.Groups(2).Value)
    Dim latCh As Integer = 0
    Dim longCh As Integer = 0
    If val1 > val2 Then

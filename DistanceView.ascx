@@ -89,8 +89,8 @@
  <ItemTemplate>
   <div class="concours_file">
    <div class="concours_file_thumbnail">
-    <a href="<%= ResolveUrl(Albatros.DNN.Modules.Concours.Common.Globals.ModuleRelPath & "Image.ashx") %>?DistanceId=<%= DistanceId %>&Filename=<%#System.IO.Path.GetFilenameWithoutExtension(Container.DataItem.Name)%>&w=800&h=800&c=false" target="_blank">
-     <img src="<%= ResolveUrl(Albatros.DNN.Modules.Concours.Common.Globals.ModuleRelPath & "Image.ashx") %>?DistanceId=<%= DistanceId %>&Filename=<%#System.IO.Path.GetFilenameWithoutExtension(Container.DataItem.Name)%>&w=80&h=80&c=true" alt="<%#Container.DataItem.Name%>" />
+    <a href="<%= ResolveUrl(Albatros.DNN.Modules.Concours.Common.Globals.glbModuleRelPath & "Image.ashx") %>?DistanceId=<%= DistanceId %>&Filename=<%#System.IO.Path.GetFilenameWithoutExtension(Container.DataItem.Name)%>&w=800&h=800&c=false" target="_blank">
+     <img src="<%= ResolveUrl(Albatros.DNN.Modules.Concours.Common.Globals.glbModuleRelPath & "Image.ashx") %>?DistanceId=<%= DistanceId %>&Filename=<%#System.IO.Path.GetFilenameWithoutExtension(Container.DataItem.Name)%>&w=80&h=80&c=true" alt="<%#Container.DataItem.Name%>" />
     </a>
    </div>
    <div class="concours_file_link">

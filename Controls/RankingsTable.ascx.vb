@@ -6,7 +6,7 @@
   Public Property NrRecords As Integer = 0
 
   Private Sub Page_Init(sender As Object, e As System.EventArgs) Handles Me.Init
-   LocalResourceFile = "DesktopModules/Albatros/Concours/App_LocalResources/SharedResources"
+   LocalResourceFile = Common.Globals.glbSharedResources
   End Sub
 
   Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
