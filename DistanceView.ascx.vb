@@ -31,12 +31,13 @@ Public Class DistanceView
   Else
    cmdEdit.Visible = (Security.CanAdd Or Security.CanEdit) And DistanceTask.UserId = UserId And Not DistanceTask.Validated
   End If
-  cmdDelete.Visible = (Security.CanAdd Or Security.CanEdit) And (DistanceTask.UserId = UserId Or Security.CanValidate)
-  ctlUploadContainer.Visible = (Security.CanAdd Or Security.CanEdit) And (DistanceTask.UserId = UserId Or Security.CanValidate)
-  cmdValidate.Visible = Security.CanValidate And DistanceTask.Validated = False
 
+  cmdDelete.Visible = (Security.CanAdd Or Security.CanEdit) And (DistanceTask.UserId = UserId Or Security.CanValidate)
   DotNetNuke.UI.Utilities.ClientAPI.AddButtonConfirm(cmdDelete, LocalizeString("Delete.Confirm"))
-  DotNetNuke.UI.Utilities.ClientAPI.AddButtonConfirm(cmdValidate, LocalizeString("Validate.Confirm"))
+
+  ctlUploadContainer.Visible = (Security.CanAdd Or Security.CanEdit) And (DistanceTask.UserId = UserId Or Security.CanValidate)
+
+  SetValidationButton()
 
   If Not Me.IsPostBack Then
    Dim points As New List(Of Point)
@@ -167,11 +168,22 @@ Public Class DistanceView
  End Sub
 
  Private Sub cmdValidate_Click(sender As Object, e As System.EventArgs) Handles cmdValidate.Click
-  DistanceTask.Validated = True
+  DistanceTask.Validated = Not DistanceTask.Validated
   DistanceTask.ValidatedByUserID = UserId
   DistanceTask.ValidatedOnDate = Now
   DistancesController.UpdateDistance(DistanceTask, UserId)
-  cmdValidate.Visible = False
+  SetValidationButton()
+ End Sub
+
+ Private Sub SetValidationButton()
+  cmdValidate.Visible = Security.CanValidate
+  If DistanceTask.Validated Then
+   DotNetNuke.UI.Utilities.ClientAPI.AddButtonConfirm(cmdValidate, LocalizeString("RemoveValidation.Confirm"))
+   cmdValidate.Text = LocalizeString("cmdRemoveValidation")
+  Else
+   DotNetNuke.UI.Utilities.ClientAPI.AddButtonConfirm(cmdValidate, LocalizeString("Validate.Confirm"))
+   cmdValidate.Text = LocalizeString("cmdValidate")
+  End If
  End Sub
 
 End Class

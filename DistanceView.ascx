@@ -116,7 +116,7 @@
  <asp:LinkButton runat="server" ID="cmdCancel" resourcekey="cmdReturn" Visible="true" CssClass="dnnSecondaryAction" />
  <asp:LinkButton runat="server" ID="cmdEdit" resourcekey="cmdEdit" Visible="false" CssClass="dnnSecondaryAction" />
  <asp:LinkButton runat="server" ID="cmdDelete" resourcekey="cmdDelete" Visible="false" CssClass="dnnSecondaryAction" />
- <asp:LinkButton runat="server" ID="cmdValidate" resourcekey="cmdValidate" Visible="false" CssClass="dnnSecondaryAction" />
+ <asp:LinkButton runat="server" ID="cmdValidate" Visible="false" CssClass="dnnSecondaryAction" />
 </p>
 
 <script type="text/javascript">

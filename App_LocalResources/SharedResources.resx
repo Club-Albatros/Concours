@@ -279,4 +279,10 @@
   <data name="Outside.Text" xml:space="preserve">
     <value>Outside</value>
   </data>
+  <data name="RemoveValidation.Confirm" xml:space="preserve">
+    <value>Remove validation for this flight?</value>
+  </data>
+  <data name="cmdRemoveValidation.Text" xml:space="preserve">
+    <value>Remove Validation</value>
+  </data>
 </root>
