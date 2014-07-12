@@ -108,7 +108,7 @@ Public Class DistanceEdit
     .CalculateTotals()
    End If
    If txtTotalDistance.Text.Trim <> "" Then .TotalDistance = Double.Parse(txtTotalDistance.Text)
-   If txtTotalPoints.Text.Trim <> "" Then .TotalPoints = Integer.Parse(txtTotalPoints.Text)
+   If txtTotalPoints.Text.Trim <> "" Then .TotalPoints = Double.Parse(txtTotalPoints.Text)
    If txtSummary.Text.Trim <> "" Then .Summary = txtSummary.Text.Trim
   End With
 

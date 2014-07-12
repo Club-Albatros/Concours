@@ -41,7 +41,7 @@
 	<div class="dnnFormItem" id="trTotalPoints" runat="server">
   <dnn:label id="lblTotalPoints" runat="server" controlname="txtTotalPoints" suffix=":" />
   <asp:TextBox runat="server" ID="txtTotalPoints" Width="100" />
-  <asp:RegularExpressionValidator runat="server" ID="regTotalPoints" resourcekey="InvalidInteger.ErrorMessage" CssClass="dnnFormMessage dnnFormError" controltovalidate="txtTotalPoints" display="Dynamic" ValidationExpression="\d+" />
+  <asp:RegularExpressionValidator runat="server" ID="regTotalPoints" resourcekey="InvalidNumber.ErrorMessage" CssClass="dnnFormMessage dnnFormError" controltovalidate="txtTotalPoints" display="Dynamic" ValidationExpression="\d+([\.,]?)\d?" />
 	</div>
 </fieldset>
 
