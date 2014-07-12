@@ -42,7 +42,8 @@
 	</div>
 	<div class="dnnFormItem">
   <dnn:label id="lblValidated" runat="server" suffix=":" />
-  <span><%= IIf(DistanceTask.ValidatedOnDate=DateTime.MinValue, LocalizeString("NotValidated"), String.Format(LocalizeString("LastModifiedFormat"), DistanceTask.ValidatedOnDate, DistanceTask.ValidatedByDisplayName))%></span>
+  <span><%= IIf(DistanceTask.Validated, String.Format(LocalizeString("LastModifiedFormat"), DistanceTask.ValidatedOnDate, DistanceTask.ValidatedByDisplayName), IIf(DistanceTask.Rejected, LocalizeString("Rejected"), LocalizeString("NotValidated")))%>
+  </span>
 	</div>
 	<div class="dnnFormItem" ruat="server" id="divUpload">
 	</div>
@@ -116,6 +117,7 @@
  <asp:LinkButton runat="server" ID="cmdCancel" resourcekey="cmdReturn" Visible="true" CssClass="dnnSecondaryAction" />
  <asp:LinkButton runat="server" ID="cmdEdit" resourcekey="cmdEdit" Visible="false" CssClass="dnnSecondaryAction" />
  <asp:LinkButton runat="server" ID="cmdDelete" resourcekey="cmdDelete" Visible="false" CssClass="dnnSecondaryAction" />
+ <asp:LinkButton runat="server" ID="cmdReject" Visible="false" CssClass="dnnSecondaryAction" />
  <asp:LinkButton runat="server" ID="cmdValidate" Visible="false" CssClass="dnnSecondaryAction" />
 </p>
 

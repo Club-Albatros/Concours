@@ -121,7 +121,6 @@ Public Class DistanceEdit
    Exit Sub
   End If
 
-
   If DistanceTask.DistanceId = -1 Then
    DistanceTask.DistanceId = DistancesController.AddDistance(DistanceTask, UserId)
    Integration.NotificationController.FlightAdded(ModuleConfiguration, DistanceTask, EditUrl("DistanceId", DistanceTask.DistanceId.ToString, "DistanceView"))

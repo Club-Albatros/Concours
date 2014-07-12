@@ -291,4 +291,31 @@
   <data name="FlightAdded.Title" xml:space="preserve">
     <value>A new flight has been added</value>
   </data>
+  <data name="FlightApproved.Summary" xml:space="preserve">
+    <value>The flight by {0} of {1:d} has been approved by {2}.&lt;br/&gt;&lt;br/&gt;{3}&lt;br /&gt;&lt;br/&gt;{4}</value>
+  </data>
+  <data name="FlightApproved.Title" xml:space="preserve">
+    <value>Distance flight approved</value>
+  </data>
+  <data name="FlightRejected.Summary" xml:space="preserve">
+    <value>The flight by {0} of {1:d} has been rejected by {2}.&lt;br/&gt;&lt;br/&gt;{3}&lt;br /&gt;&lt;br/&gt;{4}</value>
+  </data>
+  <data name="FlightRejected.Title" xml:space="preserve">
+    <value>Distance flight rejected</value>
+  </data>
+  <data name="cmdReject.Text" xml:space="preserve">
+    <value>Reject</value>
+  </data>
+  <data name="Reject.Confirm" xml:space="preserve">
+    <value>Do you wish to reject this flight?</value>
+  </data>
+  <data name="cmdRemoveRejection.Text" xml:space="preserve">
+    <value>Undo Rejection</value>
+  </data>
+  <data name="RemoveRejection.Confirm" xml:space="preserve">
+    <value>Do you wish to undo the rejection of this flight?</value>
+  </data>
+  <data name="Rejected.Text" xml:space="preserve">
+    <value>Rejected</value>
+  </data>
 </root>

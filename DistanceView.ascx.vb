@@ -29,7 +29,7 @@ Public Class DistanceView
   If Security.CanValidate Then
    cmdEdit.Visible = True
   Else
-   cmdEdit.Visible = (Security.CanAdd Or Security.CanEdit) And DistanceTask.UserId = UserId And Not DistanceTask.Validated
+   cmdEdit.Visible = (Security.CanAdd Or Security.CanEdit) And DistanceTask.UserId = UserId And Not (DistanceTask.Validated Or DistanceTask.Rejected)
   End If
 
   cmdDelete.Visible = (Security.CanAdd Or Security.CanEdit) And (DistanceTask.UserId = UserId Or Security.CanValidate)
@@ -173,16 +173,34 @@ Public Class DistanceView
   DistanceTask.ValidatedOnDate = Now
   DistancesController.UpdateDistance(DistanceTask, UserId)
   SetValidationButton()
+  Integration.NotificationController.FlightValidated(ModuleConfiguration, DistanceTask, EditUrl("DistanceId", DistanceTask.DistanceId.ToString, "DistanceView"))
+ End Sub
+
+ Private Sub cmdReject_Click(sender As Object, e As System.EventArgs) Handles cmdReject.Click
+  DistanceTask.Rejected = Not DistanceTask.Rejected
+  DistanceTask.ValidatedByUserID = UserId
+  DistanceTask.ValidatedOnDate = Now
+  DistancesController.UpdateDistance(DistanceTask, UserId)
+  SetValidationButton()
+  Integration.NotificationController.FlightValidated(ModuleConfiguration, DistanceTask, EditUrl("DistanceId", DistanceTask.DistanceId.ToString, "DistanceView"))
  End Sub
 
  Private Sub SetValidationButton()
   cmdValidate.Visible = Security.CanValidate
+  cmdReject.Visible = Security.CanValidate
   If DistanceTask.Validated Then
    DotNetNuke.UI.Utilities.ClientAPI.AddButtonConfirm(cmdValidate, LocalizeString("RemoveValidation.Confirm"))
    cmdValidate.Text = LocalizeString("cmdRemoveValidation")
+   cmdReject.Visible = False
+  ElseIf DistanceTask.Rejected Then
+   cmdValidate.Visible = False
+   DotNetNuke.UI.Utilities.ClientAPI.AddButtonConfirm(cmdReject, LocalizeString("RemoveRejection.Confirm"))
+   cmdReject.Text = LocalizeString("cmdRemoveRejection")
   Else
    DotNetNuke.UI.Utilities.ClientAPI.AddButtonConfirm(cmdValidate, LocalizeString("Validate.Confirm"))
    cmdValidate.Text = LocalizeString("cmdValidate")
+   cmdReject.Text = LocalizeString("cmdReject")
+   DotNetNuke.UI.Utilities.ClientAPI.AddButtonConfirm(cmdReject, LocalizeString("Reject.Confirm"))
   End If
  End Sub
 

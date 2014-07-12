@@ -20,6 +20,11 @@
      <desktopModule>
       <moduleName>Albatros_Concours</moduleName>
       <foldername>Albatros\Concours</foldername>
+      <businessControllerClass>Albatros.DNN.Modules.Concours.ModuleController, ALBATROS.DNN.MODULES.CONCOURS</businessControllerClass>
+      <supportedFeatures>
+       <supportedFeature type="Searchable" />
+       <supportedFeature type="Upgradeable" />
+      </supportedFeatures>
       <moduleDefinitions>
        <moduleDefinition>
         <friendlyName>Concours</friendlyName>

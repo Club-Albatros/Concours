@@ -38,13 +38,46 @@ Namespace Integration
 
   End Sub
 
-  Public Shared Sub RemoveFlightAddedNotification(flight As DistanceInfo)
+  Public Shared Sub RemoveFlightNotifications(flight As DistanceInfo)
    Dim notificationType As NotificationType = NotificationsController.Instance.GetNotificationType(DistanceFlightValidation)
    Dim notificationKey As New NotificationKey(ContentTypeName, flight.ModuleId, flight.DistanceId, -1)
-   Dim objNotify As Notification = NotificationsController.Instance.GetNotificationByContext(notificationType.NotificationTypeId, notificationKey.ToString).SingleOrDefault
-   If objNotify IsNot Nothing Then
+   For Each objNotify As Notification In NotificationsController.Instance.GetNotificationByContext(notificationType.NotificationTypeId, notificationKey.ToString)
     NotificationsController.Instance.DeleteAllNotificationRecipients(objNotify.NotificationID)
+   Next
+  End Sub
+
+  Public Shared Sub FlightValidated(modInfo As ModuleInfo, flight As DistanceInfo, url As String)
+
+   RemoveFlightNotifications(flight)
+   Dim notificationType As NotificationType = NotificationsController.Instance.GetNotificationType(DistanceFlightValidation)
+   Dim notificationKey As New NotificationKey(ContentTypeName, flight.ModuleId, flight.DistanceId, -1)
+
+   Dim title As String = ""
+   Dim summary As String = ""
+   If flight.Rejected Then
+    title = DotNetNuke.Services.Localization.Localization.GetString("FlightRejected.Title", Common.Globals.glbSharedResources, DotNetNuke.Entities.Portals.PortalSettings.Current.DefaultLanguage)
+    summary = DotNetNuke.Services.Localization.Localization.GetString("FlightRejected.Summary", Common.Globals.glbSharedResources, DotNetNuke.Entities.Portals.PortalSettings.Current.DefaultLanguage)
+   ElseIf flight.Validated Then
+    title = DotNetNuke.Services.Localization.Localization.GetString("FlightApproved.Title", Common.Globals.glbSharedResources, DotNetNuke.Entities.Portals.PortalSettings.Current.DefaultLanguage)
+    summary = DotNetNuke.Services.Localization.Localization.GetString("FlightApproved.Summary", Common.Globals.glbSharedResources, DotNetNuke.Entities.Portals.PortalSettings.Current.DefaultLanguage)
+   Else
+    Exit Sub ' we removed all notifications and the flight is neither validated nor rejected
    End If
+   summary = String.Format(summary, flight.PilotDisplayName, flight.FlightStart, flight.ValidatedByDisplayName, flight.Summary, url)
+
+   Dim objNotification As New Notification
+   objNotification.NotificationTypeID = notificationType.NotificationTypeId
+   objNotification.Subject = title
+   objNotification.Body = summary
+   objNotification.IncludeDismissAction = False
+   objNotification.SenderUserID = flight.UserId
+   objNotification.Context = notificationKey.ToString
+
+   Dim sendList As Dictionary(Of Integer, UserInfo) = GetUsersInPermission(modInfo, Common.Globals.glbControllerPermissionKey)
+   AddUser(sendList, modInfo.PortalID, flight.UserId)
+
+   AddNotifications(modInfo.PortalID, sendList.Values.ToList(), objNotification)
+
   End Sub
 #End Region
 
@@ -72,6 +105,14 @@ Namespace Integration
    End If
   End Sub
 
+  Private Shared Sub AddUser(ByRef userList As Dictionary(Of Integer, UserInfo), portalId As Integer, userId As Integer)
+   If Not userList.ContainsKey(userId) Then
+    Dim u As UserInfo = UserController.GetUserById(portalId, userId)
+    If u IsNot Nothing Then
+     userList.Add(userId, u)
+    End If
+   End If
+  End Sub
   Private Shared Sub AddNotifications(portalId As Integer, colUsers As List(Of UserInfo), objNotification As Notification)
    If colUsers.Count > DotNetNuke.Services.Social.Messaging.Internal.InternalMessagingController.Instance.RecipientLimit(portalId) Then
     For Each u As UserInfo In colUsers
@@ -86,7 +127,7 @@ Namespace Integration
 #End Region
 
 #Region " Install Methods "
-  Friend Shared Sub AddNotificationTypes()
+  Friend Shared Sub AddNotificationTypes() ' runs on 1.1.0 upgrade
 
    Dim deskModuleId As Integer = DesktopModuleController.GetDesktopModuleByFriendlyName("Concours").DesktopModuleID
 
