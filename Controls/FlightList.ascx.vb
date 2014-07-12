@@ -42,6 +42,7 @@ Namespace Controls
    Else
     grdFlights.DataSource = DistancesController.GetDistancesByModule(ModuleId, Validated, pageIndex, pageSize, sortorder, total)
    End If
+   grdFlights.Columns(7).Visible = UserOnly
    grdFlights.VirtualItemCount = total
 
   End Sub
