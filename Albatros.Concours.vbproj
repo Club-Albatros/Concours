@@ -148,6 +148,9 @@
     <Compile Include="Components\Integration\JournalController.vb" />
     <Compile Include="Components\Integration\NotificationController.vb" />
     <Compile Include="Components\Integration\NotificationKey.vb" />
+    <Compile Include="Components\Rss\RssController.vb" />
+    <Compile Include="Components\Rss\RssFeed.vb" />
+    <Compile Include="Components\Rss\StringWriterWithEncoding.vb" />
     <Compile Include="Components\Services\ConcoursRouteMapper.vb" />
     <Compile Include="Controls\FlightList.ascx.designer.vb">
       <DependentUpon>FlightList.ascx</DependentUpon>

@@ -4,7 +4,6 @@ Option Explicit On
 Imports DotNetNuke.Web.Api
 
 Public Class ConcoursRouteMapper
-
  Implements IServiceRouteMapper
 
  Public Enum ServiceControllers

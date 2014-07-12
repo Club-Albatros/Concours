@@ -83,5 +83,9 @@
    End Select
   End Function
 
+  Public Shared Function GetSafePageName(pageName As String) As String
+   Return Regex.Replace(Regex.Replace(pageName, "[^\w^\d]", "-").Trim("-"c), "-+", "-")
+  End Function
+
  End Class
 End Namespace
