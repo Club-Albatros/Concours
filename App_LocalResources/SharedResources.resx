@@ -324,4 +324,16 @@
   <data name="Validated.Text" xml:space="preserve">
     <value>Validated</value>
   </data>
+  <data name="FlightValidatedJournal.Summary" xml:space="preserve">
+    <value>The flight by {0} ({2}) on {1:d} has been validated and can now be viewed here: &lt;a href="{3}"&gt;{3}&lt;/a&gt;</value>
+  </data>
+  <data name="FlightValidatedJournal.Title" xml:space="preserve">
+    <value>A new validated flight in the distance competition!</value>
+  </data>
+  <data name="NewFlightJournal.Summary" xml:space="preserve">
+    <value>{0} has added a new flight he made on {1:d}. {2}. This flight is waiting for validation.</value>
+  </data>
+  <data name="NewFlightJournal.Title" xml:space="preserve">
+    <value>A new flight has been added to the distance competition</value>
+  </data>
 </root>

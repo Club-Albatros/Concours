@@ -144,6 +144,8 @@
     <Compile Include="Components\Entities\Distances\DistancesController_FK.vb" />
     <Compile Include="Components\Common\Extensions.vb" />
     <Compile Include="Components\Common\Globals.vb" />
+    <Compile Include="Components\Integration\Integration.vb" />
+    <Compile Include="Components\Integration\JournalController.vb" />
     <Compile Include="Components\Integration\NotificationController.vb" />
     <Compile Include="Components\Integration\NotificationKey.vb" />
     <Compile Include="Components\Services\ConcoursRouteMapper.vb" />

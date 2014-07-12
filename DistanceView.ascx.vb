@@ -175,6 +175,7 @@ Public Class DistanceView
   DistancesController.UpdateDistance(DistanceTask, UserId)
   SetValidationButton()
   Integration.NotificationController.FlightValidated(ModuleConfiguration, DistanceTask, EditUrl("DistanceId", DistanceTask.DistanceId.ToString, "DistanceView"))
+  If DistanceTask.Validated Then Integration.JournalController.AddFlightToJournal(ModuleConfiguration, DistanceTask, EditUrl("DistanceId", DistanceTask.DistanceId.ToString, "DistanceView"))
  End Sub
 
  Private Sub cmdReject_Click(sender As Object, e As System.EventArgs) Handles cmdReject.Click

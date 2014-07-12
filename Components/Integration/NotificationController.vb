@@ -11,7 +11,6 @@ Namespace Integration
  Public Class NotificationController
 
 #Region " Constants "
-  Public Const ContentTypeName As String = "Concours_Distance"
   Public Const DistanceFlightAddition As String = "Concours_Distance_Addition"
   Public Const DistanceFlightValidation As String = "Concours_Distance_Validation"
 #End Region
@@ -20,7 +19,7 @@ Namespace Integration
   Public Shared Sub FlightAdded(modInfo As ModuleInfo, flight As DistanceInfo, url As String)
 
    Dim notificationType As NotificationType = NotificationsController.Instance.GetNotificationType(DistanceFlightValidation)
-   Dim notificationKey As New NotificationKey(ContentTypeName, flight.ModuleId, flight.DistanceId, -1)
+   Dim notificationKey As New NotificationKey(Integration.glbContentTypeName, flight.ModuleId, flight.DistanceId, -1)
 
    Dim title As String = DotNetNuke.Services.Localization.Localization.GetString("FlightAdded.Title", Common.Globals.glbSharedResources, DotNetNuke.Entities.Portals.PortalSettings.Current.DefaultLanguage)
    Dim summary As String = DotNetNuke.Services.Localization.Localization.GetString("FlightAdded.Summary", Common.Globals.glbSharedResources, DotNetNuke.Entities.Portals.PortalSettings.Current.DefaultLanguage)
@@ -30,7 +29,7 @@ Namespace Integration
    objNotification.NotificationTypeID = notificationType.NotificationTypeId
    objNotification.Subject = title
    objNotification.Body = summary
-   objNotification.IncludeDismissAction = False
+   objNotification.IncludeDismissAction = True
    objNotification.SenderUserID = flight.UserId
    objNotification.Context = notificationKey.ToString
 
@@ -40,7 +39,7 @@ Namespace Integration
 
   Public Shared Sub RemoveFlightNotifications(flight As DistanceInfo)
    Dim notificationType As NotificationType = NotificationsController.Instance.GetNotificationType(DistanceFlightValidation)
-   Dim notificationKey As New NotificationKey(ContentTypeName, flight.ModuleId, flight.DistanceId, -1)
+   Dim notificationKey As New NotificationKey(Integration.glbContentTypeName, flight.ModuleId, flight.DistanceId, -1)
    For Each objNotify As Notification In NotificationsController.Instance.GetNotificationByContext(notificationType.NotificationTypeId, notificationKey.ToString)
     NotificationsController.Instance.DeleteAllNotificationRecipients(objNotify.NotificationID)
    Next
@@ -50,7 +49,7 @@ Namespace Integration
 
    RemoveFlightNotifications(flight)
    Dim notificationType As NotificationType = NotificationsController.Instance.GetNotificationType(DistanceFlightValidation)
-   Dim notificationKey As New NotificationKey(ContentTypeName, flight.ModuleId, flight.DistanceId, -1)
+   Dim notificationKey As New NotificationKey(Integration.glbContentTypeName, flight.ModuleId, flight.DistanceId, -1)
 
    Dim title As String = ""
    Dim summary As String = ""
@@ -69,7 +68,7 @@ Namespace Integration
    objNotification.NotificationTypeID = notificationType.NotificationTypeId
    objNotification.Subject = title
    objNotification.Body = summary
-   objNotification.IncludeDismissAction = False
+   objNotification.IncludeDismissAction = True
    objNotification.SenderUserID = flight.UserId
    objNotification.Context = notificationKey.ToString
 

@@ -124,6 +124,7 @@ Public Class DistanceEdit
   If DistanceTask.DistanceId = -1 Then
    DistanceTask.DistanceId = DistancesController.AddDistance(DistanceTask, UserId)
    Integration.NotificationController.FlightAdded(ModuleConfiguration, DistanceTask, EditUrl("DistanceId", DistanceTask.DistanceId.ToString, "DistanceView"))
+   Integration.JournalController.AddFlightToJournal(ModuleConfiguration, DistanceTask, EditUrl("DistanceId", DistanceTask.DistanceId.ToString, "DistanceView"))
   Else
    DistancesController.UpdateDistance(DistanceTask, UserId)
   End If
