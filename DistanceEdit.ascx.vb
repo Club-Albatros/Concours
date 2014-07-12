@@ -19,6 +19,7 @@ Public Class DistanceEdit
   End If
   DotNetNuke.Framework.jQuery.RequestUIRegistration()
   AddCssFile("autocomplete.css")
+  msgBoxError.Visible = False
  End Sub
 
  Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -111,6 +112,13 @@ Public Class DistanceEdit
    If txtSummary.Text.Trim <> "" Then .Summary = txtSummary.Text.Trim
   End With
 
+  ' Check competition criteria
+  If DistanceTask.TotalDistance < 10 Then
+   LeaveWithError("ShortDistance")
+   Exit Sub
+  End If
+
+
   If DistanceTask.DistanceId = -1 Then
    DistanceTask.DistanceId = DistancesController.AddDistance(DistanceTask, UserId)
   Else
@@ -122,6 +130,11 @@ Public Class DistanceEdit
  End Sub
 
 #Region " Private Methods "
+ Private Sub LeaveWithError(errorKey As String)
+  msgError.Text = LocalizeString(errorKey)
+  msgBoxError.Visible = True
+ End Sub
+
  Private Sub FillCoordinates(ByRef coordinates As String, ByRef latitude As Double, ByRef longitude As Double)
 
   Dim m As Match = Regex.Match(coordinates, "(\d{6})[^\d]+(\d{6})")

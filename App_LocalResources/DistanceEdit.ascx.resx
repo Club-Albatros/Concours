@@ -213,4 +213,7 @@
   <data name="lblValidated.Text" xml:space="preserve">
     <value>Validated</value>
   </data>
+  <data name="ShortDistance.Text" xml:space="preserve">
+    <value>The flight is not valid for the competition as it is shorter than 10 km!</value>
+  </data>
 </root>

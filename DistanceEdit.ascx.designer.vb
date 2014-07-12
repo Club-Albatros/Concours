@@ -473,6 +473,24 @@ Partial Public Class DistanceEdit
  Protected WithEvents regCoordinatesLanding As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
  '''<summary>
+ '''msgBoxError control.
+ '''</summary>
+ '''<remarks>
+ '''Auto-generated field.
+ '''To modify move field declaration from designer file to code-behind file.
+ '''</remarks>
+ Protected WithEvents msgBoxError As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+ '''<summary>
+ '''msgError control.
+ '''</summary>
+ '''<remarks>
+ '''Auto-generated field.
+ '''To modify move field declaration from designer file to code-behind file.
+ '''</remarks>
+ Protected WithEvents msgError As Global.System.Web.UI.WebControls.Label
+
+ '''<summary>
  '''cmdCancel control.
  '''</summary>
  '''<remarks>

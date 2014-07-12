@@ -143,6 +143,9 @@
  </tbody>
 </table>
 
+<div class="dnnFormMessage dnnFormError" runat="server" id="msgBoxError" visible="false">
+ <asp:Label runat="server" ID="msgError" />
+</div>
 
 <p>
  <asp:LinkButton runat="server" ID="cmdCancel" CssClass="dnnSecondaryAction" ResourceKey="cmdCancel" CausesValidation="false" />
