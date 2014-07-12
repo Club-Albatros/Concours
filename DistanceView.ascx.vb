@@ -169,6 +169,7 @@ Public Class DistanceView
 
  Private Sub cmdValidate_Click(sender As Object, e As System.EventArgs) Handles cmdValidate.Click
   DistanceTask.Validated = Not DistanceTask.Validated
+  If DistanceTask.Validated Then DistanceTask.Rejected = False
   DistanceTask.ValidatedByUserID = UserId
   DistanceTask.ValidatedOnDate = Now
   DistancesController.UpdateDistance(DistanceTask, UserId)
@@ -178,6 +179,7 @@ Public Class DistanceView
 
  Private Sub cmdReject_Click(sender As Object, e As System.EventArgs) Handles cmdReject.Click
   DistanceTask.Rejected = Not DistanceTask.Rejected
+  If DistanceTask.Rejected Then DistanceTask.Validated = False
   DistanceTask.ValidatedByUserID = UserId
   DistanceTask.ValidatedOnDate = Now
   DistancesController.UpdateDistance(DistanceTask, UserId)

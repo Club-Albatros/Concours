@@ -318,4 +318,10 @@
   <data name="Rejected.Text" xml:space="preserve">
     <value>Rejected</value>
   </data>
+  <data name="Unvalidated.Text" xml:space="preserve">
+    <value>Not Validated</value>
+  </data>
+  <data name="Validated.Text" xml:space="preserve">
+    <value>Validated</value>
+  </data>
 </root>

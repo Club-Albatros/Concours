@@ -199,3 +199,354 @@ WHERE
  [DistanceId] = @DistanceId
 GO
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}Concours_GetDistancesByModule') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}{objectQualifier}Concours_GetDistancesByModule
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Concours_GetDistancesByModule
+ @ModuleId INT,
+ @Validated BIT,
+ @PageIndex INT = -1,
+ @PageSize INT = 0,
+ @OrderBy VARCHAR(100) = ''
+AS
+DECLARE 
+ @PageLowerBound INT, 
+ @PageUpperBound INT, 
+ @RowsToReturn INT
+EXEC {databaseOwner}{objectQualifier}CalculatePagingInformation @PageIndex, @PageSize, @RowsToReturn output, @PageLowerBound output, @PageUpperBound output;
+SELECT * FROM
+(SELECT
+ d.*,
+ ROW_NUMBER() OVER
+ (ORDER BY
+  CASE @OrderBy WHEN 'ACOORDS DESC' THEN d.[ACoords] END DESC,
+  CASE @OrderBy WHEN 'ACOORDS' THEN d.[ACoords] END ASC,
+  CASE @OrderBy WHEN 'ACOORDS ASC' THEN d.[ACoords] END ASC,
+  CASE @OrderBy WHEN 'MODULEID DESC' THEN d.[ModuleId] END DESC,
+  CASE @OrderBy WHEN 'MODULEID' THEN d.[ModuleId] END ASC,
+  CASE @OrderBy WHEN 'MODULEID ASC' THEN d.[ModuleId] END ASC,
+  CASE @OrderBy WHEN 'ADESCRIPTION DESC' THEN d.[ADescription] END DESC,
+  CASE @OrderBy WHEN 'ADESCRIPTION' THEN d.[ADescription] END ASC,
+  CASE @OrderBy WHEN 'ADESCRIPTION ASC' THEN d.[ADescription] END ASC,
+  CASE @OrderBy WHEN 'ALATITUDE DESC' THEN d.[ALatitude] END DESC,
+  CASE @OrderBy WHEN 'ALATITUDE' THEN d.[ALatitude] END ASC,
+  CASE @OrderBy WHEN 'ALATITUDE ASC' THEN d.[ALatitude] END ASC,
+  CASE @OrderBy WHEN 'ALONGITUDE DESC' THEN d.[ALongitude] END DESC,
+  CASE @OrderBy WHEN 'ALONGITUDE' THEN d.[ALongitude] END ASC,
+  CASE @OrderBy WHEN 'ALONGITUDE ASC' THEN d.[ALongitude] END ASC,
+  CASE @OrderBy WHEN 'ATIME DESC' THEN d.[ATime] END DESC,
+  CASE @OrderBy WHEN 'ATIME' THEN d.[ATime] END ASC,
+  CASE @OrderBy WHEN 'ATIME ASC' THEN d.[ATime] END ASC,
+  CASE @OrderBy WHEN 'BCOORDS DESC' THEN d.[BCoords] END DESC,
+  CASE @OrderBy WHEN 'BCOORDS' THEN d.[BCoords] END ASC,
+  CASE @OrderBy WHEN 'BCOORDS ASC' THEN d.[BCoords] END ASC,
+  CASE @OrderBy WHEN 'BDESCRIPTION DESC' THEN d.[BDescription] END DESC,
+  CASE @OrderBy WHEN 'BDESCRIPTION' THEN d.[BDescription] END ASC,
+  CASE @OrderBy WHEN 'BDESCRIPTION ASC' THEN d.[BDescription] END ASC,
+  CASE @OrderBy WHEN 'BLATITUDE DESC' THEN d.[BLatitude] END DESC,
+  CASE @OrderBy WHEN 'BLATITUDE' THEN d.[BLatitude] END ASC,
+  CASE @OrderBy WHEN 'BLATITUDE ASC' THEN d.[BLatitude] END ASC,
+  CASE @OrderBy WHEN 'BLONGITUDE DESC' THEN d.[BLongitude] END DESC,
+  CASE @OrderBy WHEN 'BLONGITUDE' THEN d.[BLongitude] END ASC,
+  CASE @OrderBy WHEN 'BLONGITUDE ASC' THEN d.[BLongitude] END ASC,
+  CASE @OrderBy WHEN 'BTIME DESC' THEN d.[BTime] END DESC,
+  CASE @OrderBy WHEN 'BTIME' THEN d.[BTime] END ASC,
+  CASE @OrderBy WHEN 'BTIME ASC' THEN d.[BTime] END ASC,
+  CASE @OrderBy WHEN 'C1COORDS DESC' THEN d.[C1Coords] END DESC,
+  CASE @OrderBy WHEN 'C1COORDS' THEN d.[C1Coords] END ASC,
+  CASE @OrderBy WHEN 'C1COORDS ASC' THEN d.[C1Coords] END ASC,
+  CASE @OrderBy WHEN 'C1DESCRIPTION DESC' THEN d.[C1Description] END DESC,
+  CASE @OrderBy WHEN 'C1DESCRIPTION' THEN d.[C1Description] END ASC,
+  CASE @OrderBy WHEN 'C1DESCRIPTION ASC' THEN d.[C1Description] END ASC,
+  CASE @OrderBy WHEN 'C1LATITUDE DESC' THEN d.[C1Latitude] END DESC,
+  CASE @OrderBy WHEN 'C1LATITUDE' THEN d.[C1Latitude] END ASC,
+  CASE @OrderBy WHEN 'C1LATITUDE ASC' THEN d.[C1Latitude] END ASC,
+  CASE @OrderBy WHEN 'C1LONGITUDE DESC' THEN d.[C1Longitude] END DESC,
+  CASE @OrderBy WHEN 'C1LONGITUDE' THEN d.[C1Longitude] END ASC,
+  CASE @OrderBy WHEN 'C1LONGITUDE ASC' THEN d.[C1Longitude] END ASC,
+  CASE @OrderBy WHEN 'C2COORDS DESC' THEN d.[C2Coords] END DESC,
+  CASE @OrderBy WHEN 'C2COORDS' THEN d.[C2Coords] END ASC,
+  CASE @OrderBy WHEN 'C2COORDS ASC' THEN d.[C2Coords] END ASC,
+  CASE @OrderBy WHEN 'C2DESCRIPTION DESC' THEN d.[C2Description] END DESC,
+  CASE @OrderBy WHEN 'C2DESCRIPTION' THEN d.[C2Description] END ASC,
+  CASE @OrderBy WHEN 'C2DESCRIPTION ASC' THEN d.[C2Description] END ASC,
+  CASE @OrderBy WHEN 'C2LATITUDE DESC' THEN d.[C2Latitude] END DESC,
+  CASE @OrderBy WHEN 'C2LATITUDE' THEN d.[C2Latitude] END ASC,
+  CASE @OrderBy WHEN 'C2LATITUDE ASC' THEN d.[C2Latitude] END ASC,
+  CASE @OrderBy WHEN 'C2LONGITUDE DESC' THEN d.[C2Longitude] END DESC,
+  CASE @OrderBy WHEN 'C2LONGITUDE' THEN d.[C2Longitude] END ASC,
+  CASE @OrderBy WHEN 'C2LONGITUDE ASC' THEN d.[C2Longitude] END ASC,
+  CASE @OrderBy WHEN 'CATEGORY DESC' THEN d.[Category] END DESC,
+  CASE @OrderBy WHEN 'CATEGORY' THEN d.[Category] END ASC,
+  CASE @OrderBy WHEN 'CATEGORY ASC' THEN d.[Category] END ASC,
+  CASE @OrderBy WHEN 'COMMENTS DESC' THEN d.[Comments] END DESC,
+  CASE @OrderBy WHEN 'COMMENTS' THEN d.[Comments] END ASC,
+  CASE @OrderBy WHEN 'COMMENTS ASC' THEN d.[Comments] END ASC,
+  CASE @OrderBy WHEN 'CREATEDBYUSERID DESC' THEN d.[CreatedByUserID] END DESC,
+  CASE @OrderBy WHEN 'CREATEDBYUSERID' THEN d.[CreatedByUserID] END ASC,
+  CASE @OrderBy WHEN 'CREATEDBYUSERID ASC' THEN d.[CreatedByUserID] END ASC,
+  CASE @OrderBy WHEN 'CREATEDONDATE DESC' THEN d.[CreatedOnDate] END DESC,
+  CASE @OrderBy WHEN 'CREATEDONDATE' THEN d.[CreatedOnDate] END ASC,
+  CASE @OrderBy WHEN 'CREATEDONDATE ASC' THEN d.[CreatedOnDate] END ASC,
+  CASE @OrderBy WHEN 'DISTANCEID DESC' THEN d.[DistanceId] END DESC,
+  CASE @OrderBy WHEN 'DISTANCEID' THEN d.[DistanceId] END ASC,
+  CASE @OrderBy WHEN 'DISTANCEID ASC' THEN d.[DistanceId] END ASC,
+  CASE @OrderBy WHEN 'FLIGHTSTART DESC' THEN d.[FlightStart] END DESC,
+  CASE @OrderBy WHEN 'FLIGHTSTART' THEN d.[FlightStart] END ASC,
+  CASE @OrderBy WHEN 'FLIGHTSTART ASC' THEN d.[FlightStart] END ASC,
+  CASE @OrderBy WHEN 'FLIGHTTYPE DESC' THEN d.[FlightType] END DESC,
+  CASE @OrderBy WHEN 'FLIGHTTYPE' THEN d.[FlightType] END ASC,
+  CASE @OrderBy WHEN 'FLIGHTTYPE ASC' THEN d.[FlightType] END ASC,
+  CASE @OrderBy WHEN 'LANDINGCOORDS DESC' THEN d.[LandingCoords] END DESC,
+  CASE @OrderBy WHEN 'LANDINGCOORDS' THEN d.[LandingCoords] END ASC,
+  CASE @OrderBy WHEN 'LANDINGCOORDS ASC' THEN d.[LandingCoords] END ASC,
+  CASE @OrderBy WHEN 'LANDINGDESCRIPTION DESC' THEN d.[LandingDescription] END DESC,
+  CASE @OrderBy WHEN 'LANDINGDESCRIPTION' THEN d.[LandingDescription] END ASC,
+  CASE @OrderBy WHEN 'LANDINGDESCRIPTION ASC' THEN d.[LandingDescription] END ASC,
+  CASE @OrderBy WHEN 'LANDINGLATITUDE DESC' THEN d.[LandingLatitude] END DESC,
+  CASE @OrderBy WHEN 'LANDINGLATITUDE' THEN d.[LandingLatitude] END ASC,
+  CASE @OrderBy WHEN 'LANDINGLATITUDE ASC' THEN d.[LandingLatitude] END ASC,
+  CASE @OrderBy WHEN 'LANDINGLONGITUDE DESC' THEN d.[LandingLongitude] END DESC,
+  CASE @OrderBy WHEN 'LANDINGLONGITUDE' THEN d.[LandingLongitude] END ASC,
+  CASE @OrderBy WHEN 'LANDINGLONGITUDE ASC' THEN d.[LandingLongitude] END ASC,
+  CASE @OrderBy WHEN 'LANDINGTIME DESC' THEN d.[LandingTime] END DESC,
+  CASE @OrderBy WHEN 'LANDINGTIME' THEN d.[LandingTime] END ASC,
+  CASE @OrderBy WHEN 'LANDINGTIME ASC' THEN d.[LandingTime] END ASC,
+  CASE @OrderBy WHEN 'LASTMODIFIEDBYUSERID DESC' THEN d.[LastModifiedByUserID] END DESC,
+  CASE @OrderBy WHEN 'LASTMODIFIEDBYUSERID' THEN d.[LastModifiedByUserID] END ASC,
+  CASE @OrderBy WHEN 'LASTMODIFIEDBYUSERID ASC' THEN d.[LastModifiedByUserID] END ASC,
+  CASE @OrderBy WHEN 'LASTMODIFIEDONDATE DESC' THEN d.[LastModifiedOnDate] END DESC,
+  CASE @OrderBy WHEN 'LASTMODIFIEDONDATE' THEN d.[LastModifiedOnDate] END ASC,
+  CASE @OrderBy WHEN 'LASTMODIFIEDONDATE ASC' THEN d.[LastModifiedOnDate] END ASC,
+  CASE @OrderBy WHEN 'REJECTED DESC' THEN d.[Rejected] END DESC,
+  CASE @OrderBy WHEN 'REJECTED' THEN d.[Rejected] END ASC,
+  CASE @OrderBy WHEN 'REJECTED ASC' THEN d.[Rejected] END ASC,
+  CASE @OrderBy WHEN 'STARTCOORDS DESC' THEN d.[StartCoords] END DESC,
+  CASE @OrderBy WHEN 'STARTCOORDS' THEN d.[StartCoords] END ASC,
+  CASE @OrderBy WHEN 'STARTCOORDS ASC' THEN d.[StartCoords] END ASC,
+  CASE @OrderBy WHEN 'STARTDESCRIPTION DESC' THEN d.[StartDescription] END DESC,
+  CASE @OrderBy WHEN 'STARTDESCRIPTION' THEN d.[StartDescription] END ASC,
+  CASE @OrderBy WHEN 'STARTDESCRIPTION ASC' THEN d.[StartDescription] END ASC,
+  CASE @OrderBy WHEN 'STARTLATITUDE DESC' THEN d.[StartLatitude] END DESC,
+  CASE @OrderBy WHEN 'STARTLATITUDE' THEN d.[StartLatitude] END ASC,
+  CASE @OrderBy WHEN 'STARTLATITUDE ASC' THEN d.[StartLatitude] END ASC,
+  CASE @OrderBy WHEN 'STARTLONGITUDE DESC' THEN d.[StartLongitude] END DESC,
+  CASE @OrderBy WHEN 'STARTLONGITUDE' THEN d.[StartLongitude] END ASC,
+  CASE @OrderBy WHEN 'STARTLONGITUDE ASC' THEN d.[StartLongitude] END ASC,
+  CASE @OrderBy WHEN 'SUMMARY DESC' THEN d.[Summary] END DESC,
+  CASE @OrderBy WHEN 'SUMMARY' THEN d.[Summary] END ASC,
+  CASE @OrderBy WHEN 'SUMMARY ASC' THEN d.[Summary] END ASC,
+  CASE @OrderBy WHEN 'TOTALDISTANCE DESC' THEN d.[TotalDistance] END DESC,
+  CASE @OrderBy WHEN 'TOTALDISTANCE' THEN d.[TotalDistance] END ASC,
+  CASE @OrderBy WHEN 'TOTALDISTANCE ASC' THEN d.[TotalDistance] END ASC,
+  CASE @OrderBy WHEN 'TOTALPOINTS DESC' THEN d.[TotalPoints] END DESC,
+  CASE @OrderBy WHEN 'TOTALPOINTS' THEN d.[TotalPoints] END ASC,
+  CASE @OrderBy WHEN 'TOTALPOINTS ASC' THEN d.[TotalPoints] END ASC,
+  CASE @OrderBy WHEN 'USERID DESC' THEN d.[UserId] END DESC,
+  CASE @OrderBy WHEN 'USERID' THEN d.[UserId] END ASC,
+  CASE @OrderBy WHEN 'USERID ASC' THEN d.[UserId] END ASC,
+  CASE @OrderBy WHEN 'VALIDATED DESC' THEN d.[Validated] END DESC,
+  CASE @OrderBy WHEN 'VALIDATED' THEN d.[Validated] END ASC,
+  CASE @OrderBy WHEN 'VALIDATED ASC' THEN d.[Validated] END ASC,
+  CASE @OrderBy WHEN 'VALIDATEDBYUSERID DESC' THEN d.[ValidatedByUserID] END DESC,
+  CASE @OrderBy WHEN 'VALIDATEDBYUSERID' THEN d.[ValidatedByUserID] END ASC,
+  CASE @OrderBy WHEN 'VALIDATEDBYUSERID ASC' THEN d.[ValidatedByUserID] END ASC,
+  CASE @OrderBy WHEN 'VALIDATEDONDATE DESC' THEN d.[ValidatedOnDate] END DESC,
+  CASE @OrderBy WHEN 'VALIDATEDONDATE' THEN d.[ValidatedOnDate] END ASC,
+  CASE @OrderBy WHEN 'VALIDATEDONDATE ASC' THEN d.[ValidatedOnDate] END ASC
+) AS RowNum
+FROM
+ {databaseOwner}{objectQualifier}vw_Concours_Distances d
+WHERE
+ d.ModuleId = @ModuleId
+ AND d.Validated = @Validated) AS Tbl
+WHERE RowNum > @PageLowerBound AND RowNum < @PageUpperBound
+ORDER BY RowNum;
+SELECT COUNT (*) AS TotalRecords
+FROM
+ {databaseOwner}{objectQualifier}vw_Concours_Distances d
+WHERE
+ d.ModuleId = @ModuleId
+ AND d.Validated = @Validated;
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}Concours_GetDistancesByUser') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}{objectQualifier}Concours_GetDistancesByUser
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE {databaseOwner}{objectQualifier}Concours_GetDistancesByUser
+ @UserId INT,
+ @ModuleId INT,
+ @PageIndex INT = -1,
+ @PageSize INT = 0,
+ @OrderBy VARCHAR(100) = ''
+AS
+DECLARE 
+ @PageLowerBound INT, 
+ @PageUpperBound INT, 
+ @RowsToReturn INT
+EXEC {databaseOwner}{objectQualifier}CalculatePagingInformation @PageIndex, @PageSize, @RowsToReturn output, @PageLowerBound output, @PageUpperBound output;
+SELECT * FROM
+(SELECT
+ d.*,
+ ROW_NUMBER() OVER
+ (ORDER BY
+  CASE @OrderBy WHEN 'ACOORDS DESC' THEN d.[ACoords] END DESC,
+  CASE @OrderBy WHEN 'ACOORDS' THEN d.[ACoords] END ASC,
+  CASE @OrderBy WHEN 'ACOORDS ASC' THEN d.[ACoords] END ASC,
+  CASE @OrderBy WHEN 'MODULEID DESC' THEN d.[ModuleId] END DESC,
+  CASE @OrderBy WHEN 'MODULEID' THEN d.[ModuleId] END ASC,
+  CASE @OrderBy WHEN 'MODULEID ASC' THEN d.[ModuleId] END ASC,
+  CASE @OrderBy WHEN 'ADESCRIPTION DESC' THEN d.[ADescription] END DESC,
+  CASE @OrderBy WHEN 'ADESCRIPTION' THEN d.[ADescription] END ASC,
+  CASE @OrderBy WHEN 'ADESCRIPTION ASC' THEN d.[ADescription] END ASC,
+  CASE @OrderBy WHEN 'ALATITUDE DESC' THEN d.[ALatitude] END DESC,
+  CASE @OrderBy WHEN 'ALATITUDE' THEN d.[ALatitude] END ASC,
+  CASE @OrderBy WHEN 'ALATITUDE ASC' THEN d.[ALatitude] END ASC,
+  CASE @OrderBy WHEN 'ALONGITUDE DESC' THEN d.[ALongitude] END DESC,
+  CASE @OrderBy WHEN 'ALONGITUDE' THEN d.[ALongitude] END ASC,
+  CASE @OrderBy WHEN 'ALONGITUDE ASC' THEN d.[ALongitude] END ASC,
+  CASE @OrderBy WHEN 'ATIME DESC' THEN d.[ATime] END DESC,
+  CASE @OrderBy WHEN 'ATIME' THEN d.[ATime] END ASC,
+  CASE @OrderBy WHEN 'ATIME ASC' THEN d.[ATime] END ASC,
+  CASE @OrderBy WHEN 'BCOORDS DESC' THEN d.[BCoords] END DESC,
+  CASE @OrderBy WHEN 'BCOORDS' THEN d.[BCoords] END ASC,
+  CASE @OrderBy WHEN 'BCOORDS ASC' THEN d.[BCoords] END ASC,
+  CASE @OrderBy WHEN 'BDESCRIPTION DESC' THEN d.[BDescription] END DESC,
+  CASE @OrderBy WHEN 'BDESCRIPTION' THEN d.[BDescription] END ASC,
+  CASE @OrderBy WHEN 'BDESCRIPTION ASC' THEN d.[BDescription] END ASC,
+  CASE @OrderBy WHEN 'BLATITUDE DESC' THEN d.[BLatitude] END DESC,
+  CASE @OrderBy WHEN 'BLATITUDE' THEN d.[BLatitude] END ASC,
+  CASE @OrderBy WHEN 'BLATITUDE ASC' THEN d.[BLatitude] END ASC,
+  CASE @OrderBy WHEN 'BLONGITUDE DESC' THEN d.[BLongitude] END DESC,
+  CASE @OrderBy WHEN 'BLONGITUDE' THEN d.[BLongitude] END ASC,
+  CASE @OrderBy WHEN 'BLONGITUDE ASC' THEN d.[BLongitude] END ASC,
+  CASE @OrderBy WHEN 'BTIME DESC' THEN d.[BTime] END DESC,
+  CASE @OrderBy WHEN 'BTIME' THEN d.[BTime] END ASC,
+  CASE @OrderBy WHEN 'BTIME ASC' THEN d.[BTime] END ASC,
+  CASE @OrderBy WHEN 'C1COORDS DESC' THEN d.[C1Coords] END DESC,
+  CASE @OrderBy WHEN 'C1COORDS' THEN d.[C1Coords] END ASC,
+  CASE @OrderBy WHEN 'C1COORDS ASC' THEN d.[C1Coords] END ASC,
+  CASE @OrderBy WHEN 'C1DESCRIPTION DESC' THEN d.[C1Description] END DESC,
+  CASE @OrderBy WHEN 'C1DESCRIPTION' THEN d.[C1Description] END ASC,
+  CASE @OrderBy WHEN 'C1DESCRIPTION ASC' THEN d.[C1Description] END ASC,
+  CASE @OrderBy WHEN 'C1LATITUDE DESC' THEN d.[C1Latitude] END DESC,
+  CASE @OrderBy WHEN 'C1LATITUDE' THEN d.[C1Latitude] END ASC,
+  CASE @OrderBy WHEN 'C1LATITUDE ASC' THEN d.[C1Latitude] END ASC,
+  CASE @OrderBy WHEN 'C1LONGITUDE DESC' THEN d.[C1Longitude] END DESC,
+  CASE @OrderBy WHEN 'C1LONGITUDE' THEN d.[C1Longitude] END ASC,
+  CASE @OrderBy WHEN 'C1LONGITUDE ASC' THEN d.[C1Longitude] END ASC,
+  CASE @OrderBy WHEN 'C2COORDS DESC' THEN d.[C2Coords] END DESC,
+  CASE @OrderBy WHEN 'C2COORDS' THEN d.[C2Coords] END ASC,
+  CASE @OrderBy WHEN 'C2COORDS ASC' THEN d.[C2Coords] END ASC,
+  CASE @OrderBy WHEN 'C2DESCRIPTION DESC' THEN d.[C2Description] END DESC,
+  CASE @OrderBy WHEN 'C2DESCRIPTION' THEN d.[C2Description] END ASC,
+  CASE @OrderBy WHEN 'C2DESCRIPTION ASC' THEN d.[C2Description] END ASC,
+  CASE @OrderBy WHEN 'C2LATITUDE DESC' THEN d.[C2Latitude] END DESC,
+  CASE @OrderBy WHEN 'C2LATITUDE' THEN d.[C2Latitude] END ASC,
+  CASE @OrderBy WHEN 'C2LATITUDE ASC' THEN d.[C2Latitude] END ASC,
+  CASE @OrderBy WHEN 'C2LONGITUDE DESC' THEN d.[C2Longitude] END DESC,
+  CASE @OrderBy WHEN 'C2LONGITUDE' THEN d.[C2Longitude] END ASC,
+  CASE @OrderBy WHEN 'C2LONGITUDE ASC' THEN d.[C2Longitude] END ASC,
+  CASE @OrderBy WHEN 'CATEGORY DESC' THEN d.[Category] END DESC,
+  CASE @OrderBy WHEN 'CATEGORY' THEN d.[Category] END ASC,
+  CASE @OrderBy WHEN 'CATEGORY ASC' THEN d.[Category] END ASC,
+  CASE @OrderBy WHEN 'COMMENTS DESC' THEN d.[Comments] END DESC,
+  CASE @OrderBy WHEN 'COMMENTS' THEN d.[Comments] END ASC,
+  CASE @OrderBy WHEN 'COMMENTS ASC' THEN d.[Comments] END ASC,
+  CASE @OrderBy WHEN 'CREATEDBYUSERID DESC' THEN d.[CreatedByUserID] END DESC,
+  CASE @OrderBy WHEN 'CREATEDBYUSERID' THEN d.[CreatedByUserID] END ASC,
+  CASE @OrderBy WHEN 'CREATEDBYUSERID ASC' THEN d.[CreatedByUserID] END ASC,
+  CASE @OrderBy WHEN 'CREATEDONDATE DESC' THEN d.[CreatedOnDate] END DESC,
+  CASE @OrderBy WHEN 'CREATEDONDATE' THEN d.[CreatedOnDate] END ASC,
+  CASE @OrderBy WHEN 'CREATEDONDATE ASC' THEN d.[CreatedOnDate] END ASC,
+  CASE @OrderBy WHEN 'DISTANCEID DESC' THEN d.[DistanceId] END DESC,
+  CASE @OrderBy WHEN 'DISTANCEID' THEN d.[DistanceId] END ASC,
+  CASE @OrderBy WHEN 'DISTANCEID ASC' THEN d.[DistanceId] END ASC,
+  CASE @OrderBy WHEN 'FLIGHTSTART DESC' THEN d.[FlightStart] END DESC,
+  CASE @OrderBy WHEN 'FLIGHTSTART' THEN d.[FlightStart] END ASC,
+  CASE @OrderBy WHEN 'FLIGHTSTART ASC' THEN d.[FlightStart] END ASC,
+  CASE @OrderBy WHEN 'FLIGHTTYPE DESC' THEN d.[FlightType] END DESC,
+  CASE @OrderBy WHEN 'FLIGHTTYPE' THEN d.[FlightType] END ASC,
+  CASE @OrderBy WHEN 'FLIGHTTYPE ASC' THEN d.[FlightType] END ASC,
+  CASE @OrderBy WHEN 'LANDINGCOORDS DESC' THEN d.[LandingCoords] END DESC,
+  CASE @OrderBy WHEN 'LANDINGCOORDS' THEN d.[LandingCoords] END ASC,
+  CASE @OrderBy WHEN 'LANDINGCOORDS ASC' THEN d.[LandingCoords] END ASC,
+  CASE @OrderBy WHEN 'LANDINGDESCRIPTION DESC' THEN d.[LandingDescription] END DESC,
+  CASE @OrderBy WHEN 'LANDINGDESCRIPTION' THEN d.[LandingDescription] END ASC,
+  CASE @OrderBy WHEN 'LANDINGDESCRIPTION ASC' THEN d.[LandingDescription] END ASC,
+  CASE @OrderBy WHEN 'LANDINGLATITUDE DESC' THEN d.[LandingLatitude] END DESC,
+  CASE @OrderBy WHEN 'LANDINGLATITUDE' THEN d.[LandingLatitude] END ASC,
+  CASE @OrderBy WHEN 'LANDINGLATITUDE ASC' THEN d.[LandingLatitude] END ASC,
+  CASE @OrderBy WHEN 'LANDINGLONGITUDE DESC' THEN d.[LandingLongitude] END DESC,
+  CASE @OrderBy WHEN 'LANDINGLONGITUDE' THEN d.[LandingLongitude] END ASC,
+  CASE @OrderBy WHEN 'LANDINGLONGITUDE ASC' THEN d.[LandingLongitude] END ASC,
+  CASE @OrderBy WHEN 'LANDINGTIME DESC' THEN d.[LandingTime] END DESC,
+  CASE @OrderBy WHEN 'LANDINGTIME' THEN d.[LandingTime] END ASC,
+  CASE @OrderBy WHEN 'LANDINGTIME ASC' THEN d.[LandingTime] END ASC,
+  CASE @OrderBy WHEN 'LASTMODIFIEDBYUSERID DESC' THEN d.[LastModifiedByUserID] END DESC,
+  CASE @OrderBy WHEN 'LASTMODIFIEDBYUSERID' THEN d.[LastModifiedByUserID] END ASC,
+  CASE @OrderBy WHEN 'LASTMODIFIEDBYUSERID ASC' THEN d.[LastModifiedByUserID] END ASC,
+  CASE @OrderBy WHEN 'LASTMODIFIEDONDATE DESC' THEN d.[LastModifiedOnDate] END DESC,
+  CASE @OrderBy WHEN 'LASTMODIFIEDONDATE' THEN d.[LastModifiedOnDate] END ASC,
+  CASE @OrderBy WHEN 'LASTMODIFIEDONDATE ASC' THEN d.[LastModifiedOnDate] END ASC,
+  CASE @OrderBy WHEN 'REJECTED DESC' THEN d.[Rejected] END DESC,
+  CASE @OrderBy WHEN 'REJECTED' THEN d.[Rejected] END ASC,
+  CASE @OrderBy WHEN 'REJECTED ASC' THEN d.[Rejected] END ASC,
+  CASE @OrderBy WHEN 'STARTCOORDS DESC' THEN d.[StartCoords] END DESC,
+  CASE @OrderBy WHEN 'STARTCOORDS' THEN d.[StartCoords] END ASC,
+  CASE @OrderBy WHEN 'STARTCOORDS ASC' THEN d.[StartCoords] END ASC,
+  CASE @OrderBy WHEN 'STARTDESCRIPTION DESC' THEN d.[StartDescription] END DESC,
+  CASE @OrderBy WHEN 'STARTDESCRIPTION' THEN d.[StartDescription] END ASC,
+  CASE @OrderBy WHEN 'STARTDESCRIPTION ASC' THEN d.[StartDescription] END ASC,
+  CASE @OrderBy WHEN 'STARTLATITUDE DESC' THEN d.[StartLatitude] END DESC,
+  CASE @OrderBy WHEN 'STARTLATITUDE' THEN d.[StartLatitude] END ASC,
+  CASE @OrderBy WHEN 'STARTLATITUDE ASC' THEN d.[StartLatitude] END ASC,
+  CASE @OrderBy WHEN 'STARTLONGITUDE DESC' THEN d.[StartLongitude] END DESC,
+  CASE @OrderBy WHEN 'STARTLONGITUDE' THEN d.[StartLongitude] END ASC,
+  CASE @OrderBy WHEN 'STARTLONGITUDE ASC' THEN d.[StartLongitude] END ASC,
+  CASE @OrderBy WHEN 'SUMMARY DESC' THEN d.[Summary] END DESC,
+  CASE @OrderBy WHEN 'SUMMARY' THEN d.[Summary] END ASC,
+  CASE @OrderBy WHEN 'SUMMARY ASC' THEN d.[Summary] END ASC,
+  CASE @OrderBy WHEN 'TOTALDISTANCE DESC' THEN d.[TotalDistance] END DESC,
+  CASE @OrderBy WHEN 'TOTALDISTANCE' THEN d.[TotalDistance] END ASC,
+  CASE @OrderBy WHEN 'TOTALDISTANCE ASC' THEN d.[TotalDistance] END ASC,
+  CASE @OrderBy WHEN 'TOTALPOINTS DESC' THEN d.[TotalPoints] END DESC,
+  CASE @OrderBy WHEN 'TOTALPOINTS' THEN d.[TotalPoints] END ASC,
+  CASE @OrderBy WHEN 'TOTALPOINTS ASC' THEN d.[TotalPoints] END ASC,
+  CASE @OrderBy WHEN 'USERID DESC' THEN d.[UserId] END DESC,
+  CASE @OrderBy WHEN 'USERID' THEN d.[UserId] END ASC,
+  CASE @OrderBy WHEN 'USERID ASC' THEN d.[UserId] END ASC,
+  CASE @OrderBy WHEN 'VALIDATED DESC' THEN d.[Validated] END DESC,
+  CASE @OrderBy WHEN 'VALIDATED' THEN d.[Validated] END ASC,
+  CASE @OrderBy WHEN 'VALIDATED ASC' THEN d.[Validated] END ASC,
+  CASE @OrderBy WHEN 'VALIDATEDBYUSERID DESC' THEN d.[ValidatedByUserID] END DESC,
+  CASE @OrderBy WHEN 'VALIDATEDBYUSERID' THEN d.[ValidatedByUserID] END ASC,
+  CASE @OrderBy WHEN 'VALIDATEDBYUSERID ASC' THEN d.[ValidatedByUserID] END ASC,
+  CASE @OrderBy WHEN 'VALIDATEDONDATE DESC' THEN d.[ValidatedOnDate] END DESC,
+  CASE @OrderBy WHEN 'VALIDATEDONDATE' THEN d.[ValidatedOnDate] END ASC,
+  CASE @OrderBy WHEN 'VALIDATEDONDATE ASC' THEN d.[ValidatedOnDate] END ASC
+) AS RowNum
+FROM
+ {databaseOwner}{objectQualifier}vw_Concours_Distances d
+WHERE
+ d.UserId = @UserId
+ AND d.ModuleId = @ModuleId) AS Tbl
+WHERE RowNum > @PageLowerBound AND RowNum < @PageUpperBound
+ORDER BY RowNum;
+SELECT COUNT (*) AS TotalRecords
+FROM
+ {databaseOwner}{objectQualifier}vw_Concours_Distances d
+WHERE
+ d.UserId = @UserId
+ AND d.ModuleId = @ModuleId;
+GO
