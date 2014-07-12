@@ -285,4 +285,10 @@
   <data name="cmdRemoveValidation.Text" xml:space="preserve">
     <value>Remove Validation</value>
   </data>
+  <data name="FlightAdded.Summary" xml:space="preserve">
+    <value>{0} has added a flight that needs to be validated. He flew on {1:d}.&lt;br /&gt;&lt;br /&gt;{2}&lt;br /&gt;&lt;br /&gt;&lt;a href="{3}"&gt;{3}&lt;/a&gt;</value>
+  </data>
+  <data name="FlightAdded.Title" xml:space="preserve">
+    <value>A new flight has been added</value>
+  </data>
 </root>

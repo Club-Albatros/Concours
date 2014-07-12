@@ -11,8 +11,8 @@ Public Class ContextSecurity
 #Region " Constructor "
  Public Sub New(objModule As ModuleInfo, user As UserInfo)
   CanEdit = ModulePermissionController.HasModulePermission(objModule.ModulePermissions, "EDIT")
-  CanAdd = ModulePermissionController.HasModulePermission(objModule.ModulePermissions, "LOGGER")
-  CanValidate = ModulePermissionController.HasModulePermission(objModule.ModulePermissions, "CONTROLLER")
+  CanAdd = ModulePermissionController.HasModulePermission(objModule.ModulePermissions, Common.Globals.glbLoggerPermissionKey)
+  CanValidate = ModulePermissionController.HasModulePermission(objModule.ModulePermissions, Common.Globals.glbControllerPermissionKey)
  End Sub
 #End Region
 

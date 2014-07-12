@@ -74,7 +74,10 @@ Public Class DistanceEdit
   If DistanceTask Is Nothing Then DistanceTask = New DistanceInfo
   With DistanceTask
    .ModuleId = ModuleId
-   If .DistanceId = -1 Then .UserId = UserId
+   If .DistanceId = -1 Then
+    .UserId = UserId
+    .PilotDisplayName = UserInfo.DisplayName
+   End If
    .FlightStart = startTime
    .Category = Integer.Parse(ddCategory.SelectedValue)
    .FlightType = Integer.Parse(ddFlightType.SelectedValue)
@@ -121,6 +124,7 @@ Public Class DistanceEdit
 
   If DistanceTask.DistanceId = -1 Then
    DistanceTask.DistanceId = DistancesController.AddDistance(DistanceTask, UserId)
+   Integration.NotificationController.FlightAdded(ModuleConfiguration, DistanceTask, EditUrl("DistanceId", DistanceTask.DistanceId.ToString, "DistanceView"))
   Else
    DistancesController.UpdateDistance(DistanceTask, UserId)
   End If

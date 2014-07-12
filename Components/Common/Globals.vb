@@ -21,6 +21,8 @@
 
   Public Const glbModuleRelPath As String = "~/DesktopModules/Albatros/Concours/"
   Public Const glbSharedResources As String = "DesktopModules/Albatros/Concours/App_LocalResources/SharedResources"
+  Public Const glbLoggerPermissionKey As String = "LOGGER"
+  Public Const glbControllerPermissionKey As String = "CONTROLLER"
 
   Public Shared Function DistanceBetweenPlaces(lon1 As Double, lat1 As Double, lon2 As Double, lat2 As Double) As Double
    Dim R As Double = 6371 ' km
