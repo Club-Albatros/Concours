@@ -74,7 +74,7 @@ Public Class DistanceEdit
   If DistanceTask Is Nothing Then DistanceTask = New DistanceInfo
   With DistanceTask
    .ModuleId = ModuleId
-   .UserId = UserId
+   If .DistanceId = -1 Then .UserId = UserId
    .FlightStart = startTime
    .Category = Integer.Parse(ddCategory.SelectedValue)
    .FlightType = Integer.Parse(ddFlightType.SelectedValue)
