@@ -2,6 +2,29 @@ ALTER TABLE {databaseOwner}{objectQualifier}Concours_Distances
  ADD [Rejected] BIT NOT NULL DEFAULT(0)
 GO
 
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}vw_Concours_Distances'))
+DROP VIEW {databaseOwner}{objectQualifier}vw_Concours_Distances
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW {databaseOwner}{objectQualifier}vw_Concours_Distances
+AS
+SELECT
+ d.*,
+ up.DisplayName AS PilotDisplayName,
+ uc.DisplayName AS CreatedByDisplayName,
+ ul.DisplayName AS LastModifiedByDisplayName,
+ uv.DisplayName AS ValidatedByDisplayName
+FROM {databaseOwner}{objectQualifier}Concours_Distances AS d
+ INNER JOIN {databaseOwner}{objectQualifier}Users AS up ON d.UserId = up.UserID
+ LEFT JOIN {databaseOwner}{objectQualifier}Users AS uc ON d.CreatedByUserID = uc.UserID
+ LEFT JOIN {databaseOwner}{objectQualifier}Users AS ul ON d.LastModifiedByUserID = ul.UserID
+ LEFT JOIN {databaseOwner}{objectQualifier}Users AS uv ON d.ValidatedByUserID = uv.UserID
+GO
+
 IF EXISTS (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}Concours_AddDistance') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 DROP PROCEDURE {databaseOwner}{objectQualifier}Concours_AddDistance
 GO
