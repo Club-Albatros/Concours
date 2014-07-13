@@ -336,4 +336,10 @@
   <data name="NewFlightJournal.Title" xml:space="preserve">
     <value>A new flight has been added to the distance competition</value>
   </data>
+  <data name="Swissgrid.Text" xml:space="preserve">
+    <value>Swissgrid</value>
+  </data>
+  <data name="WGS.Text" xml:space="preserve">
+    <value>WGS</value>
+  </data>
 </root>

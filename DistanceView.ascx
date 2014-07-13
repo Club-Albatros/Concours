@@ -56,7 +56,14 @@
    <th><%=LocalizeString("Point")%></th>
    <th><%=LocalizeString("Description")%></th>
    <th><%=LocalizeString("Time")%></th>
-   <th><%=LocalizeString("Coordinates")%></th>
+   <th colspan="2"><%=LocalizeString("Coordinates")%></th>
+  </tr>
+  <tr>
+   <th></th>
+   <th></th>
+   <th></th>
+   <th><%=LocalizeString("WGS")%></th>
+   <th><%=LocalizeString("Swissgrid")%></th>
   </tr>
  </thead>
  <tbody>
@@ -66,7 +73,8 @@
    <td><%#Container.DataItem.Name%></td>
    <td><%#Container.DataItem.Description%></td>
    <td><%#IIf(CBool(Container.DataItem.Time = DateTime.MinValue), "", CDate(Container.DataItem.Time).ToString("HH:mm"))%></td>
-   <td><%#Container.DataItem.Coords%></td>
+   <td><%#String.Format("{0:0.0000}", Container.DataItem.WGSLat)%>/<%#String.Format("{0:0.0000}", Container.DataItem.WGSLong)%></td>
+   <td><%#String.Format("{0:0}", Container.DataItem.SWLat)%>/<%#String.Format("{0:0}", Container.DataItem.SWLong)%></td>
   </tr>
  </ItemTemplate>
 </asp:Repeater>
