@@ -158,6 +158,15 @@ Partial Public Class DistanceEdit
  Protected WithEvents regTotalDistance As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
  '''<summary>
+ '''cmdRecalculate control.
+ '''</summary>
+ '''<remarks>
+ '''Auto-generated field.
+ '''To modify move field declaration from designer file to code-behind file.
+ '''</remarks>
+ Protected WithEvents cmdRecalculate As Global.System.Web.UI.WebControls.Button
+
+ '''<summary>
  '''trTotalPoints control.
  '''</summary>
  '''<remarks>

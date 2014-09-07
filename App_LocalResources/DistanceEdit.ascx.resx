@@ -216,4 +216,7 @@
   <data name="ShortDistance.Text" xml:space="preserve">
     <value>The flight is not valid for the competition as it is shorter than 10 km!</value>
   </data>
+  <data name="cmdRecalculate.Text" xml:space="preserve">
+    <value>Recalculate</value>
+  </data>
 </root>

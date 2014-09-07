@@ -37,6 +37,7 @@
   <dnn:label id="lblTotalDistance" runat="server" controlname="txtTotalDistance" suffix=":" />
   <asp:TextBox runat="server" ID="txtTotalDistance" Width="100" />
   <asp:RegularExpressionValidator runat="server" ID="regTotalDistance" resourcekey="InvalidNumber.ErrorMessage" CssClass="dnnFormMessage dnnFormError" controltovalidate="txtTotalDistance" display="Dynamic" ValidationExpression="\d+([\.,]?)\d?" />
+  <asp:Button runat="server" ID="cmdRecalculate" Visible="false" resourcekey="cmdRecalculate" CssClass="dnnSecondaryAction" />
 	</div>
 	<div class="dnnFormItem" id="trTotalPoints" runat="server">
   <dnn:label id="lblTotalPoints" runat="server" controlname="txtTotalPoints" suffix=":" />
