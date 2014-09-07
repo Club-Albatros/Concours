@@ -4,4 +4,8 @@
  <release version="01.00.00">
   <change type="New Feature">First Release</change>
  </release>
+ <release version="01.01.02">
+  <change type="New Feature">Recalculate button</change>
+  <change type="Fix">Fix to triangle and return flight calculation</change>
+ </release>
 </changelog>
