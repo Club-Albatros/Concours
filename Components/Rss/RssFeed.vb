@@ -170,7 +170,7 @@ Namespace Rss
    If FeedEmail <> "" Then output.WriteElementString("managingEditor", FeedEmail)
    output.WriteElementString("pubDate", Now.ToString("r"))
    output.WriteElementString("lastBuildDate", Now.ToString("r"))
-   output.WriteElementString("generator", "DotNetNuke Blog RSS Generator Version " & CType(System.Reflection.Assembly.GetExecutingAssembly.GetName.Version.ToString, String))
+   output.WriteElementString("generator", "Club Albatros Concours RSS Generator Version " & CType(System.Reflection.Assembly.GetExecutingAssembly.GetName.Version.ToString, String))
    output.WriteElementString("ttl", "30")
    ' extended elements
    output.WriteStartElement(nsAtomPre, "link", nsAtomFull)
