@@ -70,6 +70,39 @@ Public Class DistanceEdit
 
  Private Sub cmdSubmit_Click(sender As Object, e As System.EventArgs) Handles cmdSubmit.Click
 
+  FillDistanceInfo()
+
+  ' Check competition criteria
+  If DistanceTask.TotalDistance < 10 Then
+   LeaveWithError("ShortDistance")
+   Exit Sub
+  End If
+
+  If DistanceTask.DistanceId = -1 Then
+   DistanceTask.DistanceId = DistancesController.AddDistance(DistanceTask, UserId)
+   Integration.NotificationController.FlightAdded(ModuleConfiguration, DistanceTask, EditUrl("DistanceId", DistanceTask.DistanceId.ToString, "DistanceView"))
+   Integration.JournalController.AddFlightToJournal(ModuleConfiguration, DistanceTask, EditUrl("DistanceId", DistanceTask.DistanceId.ToString, "DistanceView"))
+  Else
+   DistancesController.UpdateDistance(DistanceTask, UserId)
+  End If
+
+  Me.Response.Redirect(EditUrl("DistanceId", DistanceTask.DistanceId.ToString, "DistanceView"), False)
+
+ End Sub
+
+ Private Sub cmdRecalculate_Click(sender As Object, e As System.EventArgs) Handles cmdRecalculate.Click
+
+  FillDistanceInfo()
+
+  DistanceTask.CalculateTotals()
+  txtTotalDistance.Text = DistanceTask.TotalDistance.ToString("0.0")
+  txtTotalPoints.Text = DistanceTask.TotalPoints.ToString("0.0")
+
+ End Sub
+
+#Region " Private Methods "
+ Private Sub FillDistanceInfo()
+
   Dim startTime As DateTime = CDate(CDate(dpFlightDate.SelectedDate) + tpTimeStart.SelectedTime)
 
   If DistanceTask Is Nothing Then DistanceTask = New DistanceInfo
@@ -116,48 +149,8 @@ Public Class DistanceEdit
    If txtSummary.Text.Trim <> "" Then .Summary = txtSummary.Text.Trim
   End With
 
-  ' Check competition criteria
-  If DistanceTask.TotalDistance < 10 Then
-   LeaveWithError("ShortDistance")
-   Exit Sub
-  End If
-
-  If DistanceTask.DistanceId = -1 Then
-   DistanceTask.DistanceId = DistancesController.AddDistance(DistanceTask, UserId)
-   Integration.NotificationController.FlightAdded(ModuleConfiguration, DistanceTask, EditUrl("DistanceId", DistanceTask.DistanceId.ToString, "DistanceView"))
-   Integration.JournalController.AddFlightToJournal(ModuleConfiguration, DistanceTask, EditUrl("DistanceId", DistanceTask.DistanceId.ToString, "DistanceView"))
-  Else
-   DistancesController.UpdateDistance(DistanceTask, UserId)
-  End If
-
-  Me.Response.Redirect(EditUrl("DistanceId", DistanceTask.DistanceId.ToString, "DistanceView"), False)
-
  End Sub
 
- Private Sub cmdRecalculate_Click(sender As Object, e As System.EventArgs) Handles cmdRecalculate.Click
-
-  If DistanceTask Is Nothing Then DistanceTask = New DistanceInfo
-  With DistanceTask
-   .StartCoords = txtCoordinatesStart.Text.Trim
-   FillCoordinates(.StartCoords, .StartLatitude, .StartLongitude)
-   .ACoords = txtCoordinatesA.Text.Trim
-   FillCoordinates(.ACoords, .ALatitude, .ALongitude)
-   .C1Coords = txtCoordinatesC1.Text.Trim
-   FillCoordinates(.C1Coords, .C1Latitude, .C1Longitude)
-   .C2Coords = txtCoordinatesC2.Text.Trim
-   FillCoordinates(.C2Coords, .C2Latitude, .C2Longitude)
-   .BCoords = txtCoordinatesB.Text.Trim
-   FillCoordinates(.BCoords, .BLatitude, .BLongitude)
-   .LandingCoords = txtCoordinatesLanding.Text.Trim
-   FillCoordinates(.LandingCoords, .LandingLatitude, .LandingLongitude)
-   .CalculateTotals()
-   txtTotalDistance.Text = .TotalDistance.ToString("0.0")
-   txtTotalPoints.Text = .TotalPoints.ToString("0.0")
-  End With
-
- End Sub
-
-#Region " Private Methods "
  Private Sub LeaveWithError(errorKey As String)
   msgError.Text = LocalizeString(errorKey)
   msgBoxError.Visible = True
