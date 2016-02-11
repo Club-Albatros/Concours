@@ -8,4 +8,7 @@
   <change type="New Feature">Recalculate button</change>
   <change type="Fix">Fix to triangle and return flight calculation</change>
  </release>
+ <release version="01.02.00">
+  <change type="New Feature">Update to DNN 8</change>
+ </release>
 </changelog>
